@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dokumen KIK MRSC Kuantan 2026 - Maritime SAR Management System</title>
+  
+  <style>
+    :root {
+      --primary-dark: #07192f;
+      --primary-navy: #0b2a4a;
+      --primary-blue: #0284c7;
+      --accent-cyan: #06b6d4;
+      --accent-teal: #14b8a6;
+      --accent-gold: #d97706;
+      --accent-gold-light: #f59e0b;
+      --danger-red: #b91c1c;
+      --success-green: #059669;
+      --bg-slate: #f8fafc;
+      --border-color: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12pt;
+      line-height: 1.15;
+      background-color: #0b1523;
+      color: var(--text-main);
+      padding-bottom: 50px;
+    }
+
+    p, li, td, th, span, div, label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12pt;
+      line-height: 1.15;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      line-height: 1.15;
+    }
+
+    /* TOP ACTION BAR (Hidden in print) */
+    .action-bar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(11, 42, 74, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--primary-blue);
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .action-bar .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+      font-size: 11pt;
+    }
+    .action-bar .nav-links {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .action-bar .nav-btn {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 9.5pt;
+      font-weight: bold;
+      padding: 5px 8px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .action-bar .nav-btn:hover {
+      background: rgba(255,255,255,0.15);
+      color: #38bdf8;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 5px;
+      font-size: 10pt;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07192f;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    }
+    .btn-gold:hover {
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* A4 PAGE CONTAINER */
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      padding: 20px 10px;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      padding: 13mm 16mm 11mm 16mm;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+      border-radius: 2px;
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* PAGE HEADER & FOOTER */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--primary-navy);
+      padding-bottom: 5px;
+      margin-bottom: 7px;
+    }
+    .page-header .tag {
+      background: var(--primary-navy);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 9pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .page-header .header-title {
+      font-size: 10pt;
+      font-weight: bold;
+      color: var(--primary-navy);
+      text-transform: uppercase;
+    }
+    .page-header .header-right {
+      font-size: 9pt;
+      font-weight: bold;
+      color: var(--primary-blue);
+    }
+
+    .page-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      justify-content: flex-start;
+    }
+
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9pt;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+    .page-footer .badge-num {
+      background: var(--primary-navy);
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 9pt;
+    }
+
+    /* HEADINGS & TYPOGRAPHY */
+    .section-title {
+      font-size: 12.5pt;
+      font-weight: bold;
+      color: var(--primary-navy);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      margin-bottom: 1px;
+    }
+    .section-title span.bar {
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: linear-gradient(to bottom, var(--accent-cyan), var(--primary-blue));
+      border-radius: 2px;
+    }
+    .subtitle {
+      font-size: 9.5pt;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+      font-style: italic;
+    }
+
+    /* CARDS & CONTAINERS */
+    .card {
+      background: var(--bg-slate);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 7px 10px;
+    }
+    .card-navy {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-navy) 100%);
+      color: white;
+      border: none;
+    }
+    .card-navy p, .card-navy span, .card-navy div, .card-navy strong {
+      color: white;
+    }
+    .card-glow-blue {
+      border: 1px solid rgba(2, 132, 199, 0.4);
+      background: #f0f9ff;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+
+    /* TABLES */
+    .info-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      font-size: 10pt;
+      line-height: 1.15;
+    }
+    .info-table th {
+      background: var(--primary-navy);
+      color: white;
+      padding: 5px 8px;
+      font-weight: bold;
+      text-align: left;
+      font-size: 10pt;
+    }
+    .info-table td {
+      padding: 4px 8px;
+      border-bottom: 1px solid var(--border-color);
+      background: white;
+      font-size: 10pt;
+    }
+    .info-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    /* ERRC BOXES */
+    .errc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .errc-box {
+      border-radius: 5px;
+      padding: 6px 9px;
+      color: white;
+    }
+    .errc-box p, .errc-box li, .errc-box strong { color: white; font-size: 9.5pt; }
+    .errc-eliminate { background: linear-gradient(135deg, #b91c1c, #991b1b); }
+    .errc-raise { background: linear-gradient(135deg, #0284c7, #0369a1); }
+    .errc-reduce { background: linear-gradient(135deg, #d97706, #b45309); }
+    .errc-create { background: linear-gradient(135deg, #059669, #047857); }
+    .errc-header {
+      font-weight: bold;
+      font-size: 10.5pt;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 2px;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* KPI CARDS */
+    .kpi-card {
+      background: white;
+      border-radius: 5px;
+      border: 1px solid var(--border-color);
+      padding: 6px 8px;
+      position: relative;
+      border-left: 4px solid var(--primary-blue);
+    }
+    .kpi-card.green { border-left-color: var(--success-green); }
+    .kpi-card.gold { border-left-color: var(--accent-gold); }
+    .kpi-card.dark { border-left-color: var(--primary-navy); }
+    .kpi-val { font-size: 15pt; font-weight: bold; color: var(--primary-navy); line-height: 1.1; }
+    .kpi-lbl { font-size: 8.5pt; font-weight: bold; color: #475569; text-transform: uppercase; margin-top: 1px; }
+    .kpi-sub { font-size: 8.5pt; color: #64748b; margin-top: 2px; line-height: 1.15; }
+
+    /* FLOW STEPS */
+    .flow-step {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      padding: 5px;
+      text-align: center;
+    }
+    .flow-step-num {
+      width: 18px;
+      height: 18px;
+      background: var(--primary-blue);
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8.5pt;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    /* MOCKUP FRAME */
+    .mockup-frame {
+      background: #0f172a;
+      border-radius: 5px;
+      border: 1px solid #334155;
+      padding: 6px;
+      color: white;
+      font-family: monospace;
+      font-size: 8.5pt;
+    }
+    .mockup-header {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 3px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid #334155;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    /* COVER PAGE SPECIAL */
+    .cover-page {
+      background: #0b1a2e url('Cover_Page.png') no-repeat center center;
+      background-size: cover;
+      padding: 13mm 15mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cover-main-title {
+      font-size: 23pt;
+      font-weight: bold;
+      line-height: 1.15;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #07172c 0%, #0f3057 50%, #003b6f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #07172c;
+      margin-bottom: 8px;
+    }
+
+    /* TOC */
+    .toc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 4px 0;
+      border-bottom: 1px dotted #cbd5e1;
+      font-size: 10pt;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .toc-title { font-weight: bold; display: flex; gap: 8px; font-size: 10pt; }
+    .toc-dots { flex: 1; border-bottom: 1px dotted #94a3b8; margin: 0 6px; height: 1px; }
+    .toc-page { font-weight: bold; color: var(--primary-navy); font-size: 10pt; }
+
+    /* LAMPIRAN IMAGES */
+    .lampiran-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .lampiran-img {
+      width: 100%;
+      max-height: 140px;
+      object-fit: contain;
+      background: #f1f5f9;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+    .lampiran-caption {
+      font-size: 8.5pt;
+      color: var(--text-muted);
+      line-height: 1.15;
+    }
+
+    /* PRINT RULES */
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .page-container {
+        gap: 0 !important;
+        padding: 0 !important;
+      }
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .cover-page {
+        background-image: url('Cover_Page.png') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+  <main class="page-container">
+
+
+<article id="page-1" class="page cover-page" aria-label="Muka Surat 1 - Kulit Muka Depan">
+      <!-- Bahagian Atas: Logo & Agensi (Tanpa Background) -->
+      <div class="cover-header" style="display: flex; align-items: center; justify-content: space-between; padding: 4px 2px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <img src="APMM-Logo-2.png" alt="Logo APMM" style="height: 75px; width: auto; object-fit: contain;">
+          <div>
+            <div style="font-size: 13.5pt; font-weight: 800; letter-spacing: 1px; color: #0b2545; text-shadow: 0 1px 3px rgba(255,255,255,0.9);">AGENSI PENGUATKUASAAN MARITIM MALAYSIA</div>
+            <div style="font-size: 10.5pt; color: #0369a1; font-weight: 700; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.9);">KEMENTERIAN DALAM NEGERI</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ruangan fleksibel penjarak tengah bagi menonjolkan visual seni bina Cover_Page.png -->
+      <div style="flex: 1;"></div>
+
+      <!-- Bahagian Bawah: Tajuk Projek & Maklumat Kumpulan dengan Kad Warna Cerah 30% Transparency -->
+      <div style="background: rgba(255, 255, 255, 0.30); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1.5px solid rgba(255, 255, 255, 0.50); border-radius: 10px; padding: 18px 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.20); margin-bottom: 2px;">
+        <!-- Subtajuk Dikekalkan Warna Oren -->
+        <div style="font-size: 10.5pt; font-weight: 800; color: #ea580c; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; text-shadow: 0 1px 2px rgba(255,255,255,0.8);">
+          DOKUMENTASI PROJEK INOVASI DAN KREATIVITI (HORIZON BAHARU)
+        </div>
+        <!-- Tajuk Utama Gradient Warna Gelap -->
+        <h1 class="cover-main-title" style="margin-bottom: 16px; font-size: 23pt; line-height: 1.15; background: linear-gradient(135deg, #07172c 0%, #0f3057 50%, #003b6f 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: #07172c;">
+          MARITIME SEARCH AND RESCUE (SAR) MANAGEMENT SYSTEM
+        </h1>
+
+        <div style="background: rgba(255, 255, 255, 0.30); border: 1px solid rgba(255, 255, 255, 0.40); border-radius: 8px; padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px;">
+          <div>
+            <div style="font-size: 8.5pt; text-transform: uppercase; color: #0284c7; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.8);">Nama Kumpulan:</div>
+            <div style="font-size: 11pt; font-weight: 800; color: #0f172a; margin-top: 1px; text-shadow: 0 1px 2px rgba(255,255,255,0.7);">KIK MRSC Kuantan</div>
+          </div>
+          <div>
+            <div style="font-size: 8.5pt; text-transform: uppercase; color: #0284c7; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.8);">Jabatan / Pejabat:</div>
+            <div style="font-size: 11pt; font-weight: 800; color: #0f172a; margin-top: 1px; text-shadow: 0 1px 2px rgba(255,255,255,0.7);">Ibu Pejabat Maritim Negeri Pahang</div>
+          </div>
+          <div>
+            <div style="font-size: 8.5pt; text-transform: uppercase; color: #0284c7; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.8);">Bidang Inovasi:</div>
+            <div style="font-size: 11pt; font-weight: 800; color: #0f172a; margin-top: 1px; text-shadow: 0 1px 2px rgba(255,255,255,0.7);">Inovasi Penyampaian Perkhidmatan</div>
+          </div>
+          <div>
+            <div style="font-size: 8.5pt; text-transform: uppercase; color: #0284c7; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.8);">Kategori Inovasi:</div>
+            <div style="font-size: 11pt; font-weight: 800; color: #0f172a; margin-top: 1px; text-shadow: 0 1px 2px rgba(255,255,255,0.7);">Inovasi Penciptaan (Sistem Baharu)</div>
+          </div>
+          <div>
+            <div style="font-size: 8.5pt; text-transform: uppercase; color: #0284c7; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.8);">Ketua Kumpulan:</div>
+            <div style="font-size: 11pt; font-weight: 800; color: #0f172a; margin-top: 1px; text-shadow: 0 1px 2px rgba(255,255,255,0.7);">Lt Kdr (M) Mohd Zulhairy bin Abd Halim</div>
+          </div>
+          <div>
+            <div style="font-size: 8.5pt; text-transform: uppercase; color: #0284c7; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.8);">AHLI KUMPULAN:</div>
+            <div style="font-size: 11pt; font-weight: 800; color: #0f172a; margin-top: 1px; text-shadow: 0 1px 2px rgba(255,255,255,0.7);">Lt Dya (M) Nur Amira Syafikah bt Roslan</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+<article id="page-2" class="page" aria-label="Muka Surat 2 - Kandungan Dokumen">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">KANDUNGAN</span>
+          <span class="header-title">Susunan Kandungan Dokumen Buku Laporan</span>
+        </div>
+        <div class="header-right">KIK MRSC KUANTAN</div>
+      </header>
+
+      <div class="page-content">
+        <div class="card card-navy" style="padding: 9px 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+            <div>
+              <div style="font-size: 8.5pt; color: #38bdf8; font-weight: bold; text-transform: uppercase;">PROFIL PROJEK INOVASI KIK APMM 2026</div>
+              <div style="font-size: 12.5pt; font-weight: bold; color: white;">Maritime Search and Rescue (SAR) Management System</div>
+            </div>
+            <span style="background: rgba(16, 185, 129, 0.25); border: 1px solid #10b981; color: #6ee7b7; font-size: 8.5pt; font-weight: bold; padding: 2px 8px; border-radius: 10px;">STATUS: LIVE PRODUCTION</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 9pt; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 5px;">
+            <div><strong>Pejabat:</strong> Pusat Koordinasi Penyelamat Maritim (MRSC) Kuantan</div>
+            <div><strong>Kelulusan Ketua Jabatan:</strong> 19 Mei 2026</div>
+            <div><strong>No. Rujukan Uji Cuba:</strong> APMM. W3.100-13/5/1 Jld. 3 (8)</div>
+            <div><strong>Tarikh Kuat Kuasa Memo:</strong> 1 Oktober 2026</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Senarai Kandungan Dokumen Laporan KIK
+          </div>
+          <div class="subtitle">Disusun mengikut Format Dokumentasi Rasmi Garis Panduan KIK APMM 2026.</div>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--border-color); border-radius: 5px; padding: 8px 12px; display: flex; flex-direction: column; gap: 3px;">
+          <a href="#page-1" class="toc-item">
+            <span class="toc-title"><span>0.0</span> Muka Depan (Kulit Laporan Rasmi)</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">-</span>
+          </a>
+          <a href="#page-2" class="toc-item">
+            <span class="toc-title"><span>•</span> Senarai Kandungan Dokumen & Pautan Pengujian Langsung</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">i</span>
+          </a>
+          <a href="#page-ii" class="toc-item">
+            <span class="toc-title"><span>•</span> Glosari & Senarai Singkatan Operasi SAR</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">ii</span>
+          </a>
+          <a href="#page-3" class="toc-item" style="font-weight: bold; color: var(--primary-navy);">
+            <span class="toc-title"><span>1.0</span> RINGKASAN EKSEKUTIF (300-500 Patah Perkataan / Tidak Melebihi 2 Muka Surat)</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">1 - 2</span>
+          </a>
+          <div style="padding-left: 18px; display: flex; flex-direction: column; gap: 1px;">
+            <a href="#page-3" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>a) Bidang dan Kategori Inovasi (Inovasi Penyampaian Perkhidmatan & Penciptaan)</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">1</span>
+            </a>
+            <a href="#page-3" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>b) Penjelasan Keberhasilan Projek (Outcome / Impak Operasi SAR)</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">1 - 2</span>
+            </a>
+            <a href="#page-4" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>c) Potensi Pengembangan Projek (Replikasi, Pengkomersialan & Ketersediaan)</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">2</span>
+            </a>
+          </div>
+          <a href="#page-5" class="toc-item" style="font-weight: bold; color: var(--primary-navy);">
+            <span class="toc-title"><span>2.0</span> PERINCIAN PROJEK (3000-5000 Patah Perkataan / 10-15 Muka Surat)</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">3 - 14</span>
+          </a>
+          <div style="padding-left: 18px; display: flex; flex-direction: column; gap: 1px;">
+            <a href="#page-5" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>a) Penglibatan Pihak Pengurusan (Sokongan, Struktur Pasukan, Libat Urus BCLBB)</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">3</span>
+            </a>
+            <a href="#page-6" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>b) Signifikan Pemilihan Projek (Fungsi APMM, Piagam, Agenda Nasional, ERRC, Ishikawa)</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">4 - 7</span>
+            </a>
+            <a href="#page-10" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>c) Tindakan Penyelesaian (Design Thinking, SCAMPER, Arkitektur, Aliran & Uji Cuba)</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">8 - 11</span>
+            </a>
+            <a href="#page-14" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>d) Keberhasilan Projek (Outcome Kuantitatif 91.6%, Impak Penyelamatan & Kos Sifar RM0)</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">12 - 13</span>
+            </a>
+            <a href="#page-16" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>e) Potensi Perkembangan Projek (TRL 9, Replikasi 5 MRSC, Harta Intelek & Kelulusan)</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">14</span>
+            </a>
+          </div>
+          <a href="#page-17" class="toc-item" style="font-weight: bold; color: var(--primary-navy);">
+            <span class="toc-title"><span>3.0</span> LAMPIRAN (DOKUMEN SOKONGAN & EVIDENS BERGAMBAR)</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">15 - 16</span>
+          </a>
+          <div style="padding-left: 18px; display: flex; flex-direction: column; gap: 1px;">
+            <a href="#page-17" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>Lampiran A & B: Borang Penyertaan Rasmi, Kelulusan Ketua Jabatan & Memo Sokongan</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">15</span>
+            </a>
+            <a href="#page-18" class="toc-item" style="font-size: 9pt; color: #475569;">
+              <span>Lampiran C - F: Evidens Pembentangan BCLBB Ibu Pejabat, Google Meet & Simulasi Taktikal</span>
+              <span class="toc-dots"></span>
+              <span class="toc-page">16</span>
+            </a>
+          </div>
+        </div>
+
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 30%;">Aplikasi Sistem</th>
+              <th style="width: 45%;">Pautan Langsung Sistem (Akses 24 Jam)</th>
+              <th style="width: 25%;">Peranan Pengguna</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SRU Mobile Navigator</strong></td>
+              <td><code>https://sar-mobile.vercel.app/</code></td>
+              <td>Akses Bot Laut (SRU)</td>
+            </tr>
+            <tr>
+              <td><strong>SMC Command Dashboard</strong></td>
+              <td><code>https://smc-sar-mmea-dashboard.pages.dev/</code></td>
+              <td>Pusat Kawalan (MRSC)</td>
+            </tr>
+            <tr>
+              <td><strong>Borang Kaji Selidik Impak</strong></td>
+              <td><code>https://forms.gle/4d9jThi4jYi6nKAN7</code></td>
+              <td>Responden Operasi SAR</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Kandungan Dokumen</div>
+        <div class="badge-num">i</div>
+      </footer>
+    </article>
+
+    <article id="page-ii" class="page" aria-label="Muka Surat ii - Glosari dan Senarai Singkatan Operasi SAR">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">GLOSARI</span>
+          <span class="header-title">GLOSARI & SENARAI SINGKATAN OPERASI</span>
+        </div>
+        <div class="header-right">KIK MRSC KUANTAN</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Senarai Singkatan & Istilah Teknikal Operasi SAR
+          </div>
+          <div class="subtitle">Panduan rujukan akronim operasi carilamat maritim, piawaian antarabangsa dan teknologi sistem.</div>
+        </div>
+
+        <div class="grid-2" style="gap: 10px; margin-top: 2px;">
+          <!-- Kolum 1: Operasi Carilamat Maritim -->
+          <div>
+            <div style="font-weight: bold; font-size: 9pt; color: var(--primary-navy); margin-bottom: 4px; padding-bottom: 2px; border-bottom: 2px solid var(--primary-blue);">
+              A. OPERASI CARILAMAT MARITIM (SAR)
+            </div>
+            <table class="info-table" style="font-size: 8.5pt;">
+              <thead>
+                <tr>
+                  <th style="width: 28%; padding: 3px 6px;">Singkatan</th>
+                  <th style="width: 72%; padding: 3px 6px;">Maksud & Definisi Operasi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>APMM / MMEA</strong></td>
+                  <td>Agensi Penguatkuasaan Maritim Malaysia (Malaysia Coast Guard).</td>
+                </tr>
+                <tr>
+                  <td><strong>SAR</strong></td>
+                  <td><em>Search and Rescue</em> (Operasi Carilamat Maritim).</td>
+                </tr>
+                <tr>
+                  <td><strong>MRCC</strong></td>
+                  <td><em>Maritime Rescue Coordination Centre</em> (Pusat Kawalan Kebangsaan Putrajaya).</td>
+                </tr>
+                <tr>
+                  <td><strong>MRSC</strong></td>
+                  <td><em>Maritime Rescue Sub-Centre</em> (Pusat Penyelarasan Wilayah).</td>
+                </tr>
+                <tr>
+                  <td><strong>SMC</strong></td>
+                  <td><em>SAR Mission Coordinator</em> (Pegawai Penyelaras Misi Carilamat).</td>
+                </tr>
+                <tr>
+                  <td><strong>SRU</strong></td>
+                  <td><em>Search and Rescue Unit</em> (Aset bot / kapal / pesawat di laut).</td>
+                </tr>
+                <tr>
+                  <td><strong>OSC</strong></td>
+                  <td><em>On-Scene Commander</em> (Komander di lokasi operasi maritim).</td>
+                </tr>
+                <tr>
+                  <td><strong>PHC</strong></td>
+                  <td>Pangkalan Hadapan Carilamat (Pangkalan operasi hadapan pesisir).</td>
+                </tr>
+                <tr>
+                  <td><strong>SitRep</strong></td>
+                  <td><em>Situation Report</em> (Laporan Situasi berkala perkembangan operasi).</td>
+                </tr>
+                <tr>
+                  <td><strong>SAREX</strong></td>
+                  <td><em>Search and Rescue Exercise</em> (Latihan simulasi carilamat).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Kolum 2: Piawaian, Navigasi & Teknologi -->
+          <div>
+            <div style="font-weight: bold; font-size: 9pt; color: var(--primary-navy); margin-bottom: 4px; padding-bottom: 2px; border-bottom: 2px solid var(--accent-gold);">
+              B. PIAWAIAN, NAVIGASI & TEKNOLOGI
+            </div>
+            <table class="info-table" style="font-size: 8.5pt;">
+              <thead>
+                <tr>
+                  <th style="width: 28%; padding: 3px 6px;">Istilah</th>
+                  <th style="width: 72%; padding: 3px 6px;">Maksud & Konteks Inovasi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Datum</strong></td>
+                  <td>Titik geografi jangkaan kedudukan mangsa berdasarkan hanyutan arus & angin.</td>
+                </tr>
+                <tr>
+                  <td><strong>Expanding Square</strong></td>
+                  <td>Corak carian saintifik kembangan segi empat tepat dari titik Datum.</td>
+                </tr>
+                <tr>
+                  <td><strong>Parallel Track</strong></td>
+                  <td>Corak carian laluan selari bagi kawasan carian laut luas.</td>
+                </tr>
+                <tr>
+                  <td><strong>IAMSAR</strong></td>
+                  <td>Manual antarabangsa penerbangan & maritim SAR terbitan IMO & ICAO.</td>
+                </tr>
+                <tr>
+                  <td><strong>NAMSAR</strong></td>
+                  <td>Manual Carilamat Kebangsaan (National SAR Manual Malaysia).</td>
+                </tr>
+                <tr>
+                  <td><strong>SOLAS 1974</strong></td>
+                  <td>Konvensyen Antarabangsa Keselamatan Nyawa di Laut (IMO).</td>
+                </tr>
+                <tr>
+                  <td><strong>PWA</strong></td>
+                  <td><em>Progressive Web App</em> (Aplikasi web mudah alih berkeupayaan luar talian).</td>
+                </tr>
+                <tr>
+                  <td><strong>GIS</strong></td>
+                  <td><em>Geographic Information System</em> (Pemetaan spatial berlapisan digital).</td>
+                </tr>
+                <tr>
+                  <td><strong>TRL 9</strong></td>
+                  <td><em>Technology Readiness Level</em> 9 (Kematangan sistem siap guna pengeluaran).</td>
+                </tr>
+                <tr>
+                  <td><strong>ERRC</strong></td>
+                  <td>Alat strategi Kanvas Inovasi: <em>Eliminate, Reduce, Raise, Create</em>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card card-navy" style="padding: 6px 10px; margin-top: 5px;">
+          <div style="font-size: 8pt; color: #38bdf8; font-weight: bold; text-transform: uppercase;">
+            NOTA PENGGUNAAN GLOSARI DOKUMENTASI:
+          </div>
+          <p style="font-size: 8pt; color: #cbd5e1; margin-top: 2px; line-height: 1.15;">
+            Singkatan dan istilah di atas diguna pakai secara konsisten di seluruh buku laporan ini bagi memudahkan rujukan silang panel penilai terhadap aspek teknikal, taktikal, dan perundangan operasi carilamat Agensi Penguatkuasaan Maritim Malaysia.
+          </p>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Glosari & Senarai Singkatan</div>
+        <div class="badge-num">ii</div>
+      </footer>
+    </article>
+
+<article id="page-3" class="page" aria-label="Muka Surat 1 - Ringkasan Eksekutif Muka 1">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 1.0</span>
+          <span class="header-title">RINGKASAN EKSEKUTIF</span>
+        </div>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Ringkasan Eksekutif Projek Inovasi
+          </div>
+        </div>
+
+        <div class="card" style="background: white; border-left: 4px solid var(--primary-navy); padding: 9px 12px;">
+          <div style="font-weight: bold; font-size: 11pt; color: var(--primary-navy); margin-bottom: 3px;">
+            a) Bidang dan Kategori Inovasi
+          </div>
+          <p style="text-align: justify; line-height: 1.15; color: #1e293b;">
+            Projek Maritime Search and Rescue (SAR) Management System ini dikategorikan dalam bidang Inovasi Penyampaian Perkhidmatan di bawah kategori Inovasi Penciptaan. Inovasi ini dibangunkan sepenuhnya secara berdikari (100% in-house) oleh Kumpulan KIK Primer MRSC Kuantan, Maritim Negeri Pahang, bertujuan mentransformasikan sistem pengurusan operasi carilamat maritim. Ekosistem ini merapatkan jurang komunikasi kritikal antara pusat kawalan operasi SAR iaitu Maritime Rescue Sub-Centre (MRSC) yang diketuai oleh SAR Mission Coordinator (SMC), Pangkalan Hadapan Carilamat (PHC) dan aset bot penyelamat (SRU) di laut lepas melalui integrasi dwi-aplikasi pintar. Kaedah ini menggantikan proses legasi berasaskan kertas fizikal serta panggilan suara radio VHF yang sering mengalami gangguan penerimaan semasa laut bergelora, selaras dengan piawaian antarabangsa IAMSAR dan Manual NAMSAR Kebangsaan.
+          </p>
+        </div>
+
+        <div class="card" style="background: white; border-left: 4px solid var(--accent-cyan); padding: 9px 12px;">
+          <div style="font-weight: bold; font-size: 11pt; color: var(--primary-navy); margin-bottom: 3px;">
+            b) Penjelasan Keberhasilan Projek (Outcome dan Impak Operasi)
+          </div>
+          <p style="text-align: justify; line-height: 1.15; color: #1e293b;">
+            Keberhasilan projek ini dibuktikan melalui peningkatan produktiviti dan penjimatan masa yang sangat signifikan. Masa penyediaan laporan insiden dan Situation Report (SitRep) berjaya disingkatkan sebanyak <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">91.6%</mark>, iaitu daripada <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">180 minit (3 jam)</mark> kaedah manual kepada hanya <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">15 minit</mark> secara digital automatik. Di samping itu, kelajuan penyaluran koordinat kecemasan dan sektor carian dari bilik gerakan ke bot laut dipercepatkan lebih <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">95%</mark>, daripada <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">30 hingga 45 minit</mark> kepada kurang daripada <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">1 minit (&lt; 1 minit)</mark>. Ketepatan penghantaran data mencapai <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">100%</mark> tepat kedudukan GPS tanpa sebarang ralat transkripsi lisan. Dari sudut implikasi kewangan, sistem ini dibangunkan dengan kos pembangunan <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">RM 0 (Sifar Ringgit)</mark> tanpa melibatkan perolehan perkakasan tambahan atau yuran lesen vendor luar.
+          </p>
+        </div>
+
+        <div class="grid-4" style="margin-top: 2px;">
+          <div class="kpi-card">
+            <div class="kpi-val" style="color: #0284c7;"><mark style="background: #fef08a; color: #854d0e; padding: 0 4px; border-radius: 3px;">91.6%</mark></div>
+            <div class="kpi-lbl">Penjimatan Masa</div>
+            <div class="kpi-sub">Laporan SitRep turun dari <mark style="background: #fef08a; color: #854d0e; padding: 0 2px;">180 min ke 15 min</mark>.</div>
+          </div>
+          <div class="kpi-card green">
+            <div class="kpi-val" style="color: #10b981;"><mark style="background: #fef08a; color: #854d0e; padding: 0 4px; border-radius: 3px;">&lt; 1 Min</mark></div>
+            <div class="kpi-lbl">Kelajuan Koordinat</div>
+            <div class="kpi-sub">Transmisi segera terus ke skrin telefon bot.</div>
+          </div>
+          <div class="kpi-card gold">
+            <div class="kpi-val" style="color: #d97706;"><mark style="background: #fef08a; color: #854d0e; padding: 0 4px; border-radius: 3px;">100%</mark></div>
+            <div class="kpi-lbl">Ketepatan GPS</div>
+            <div class="kpi-sub">Sifar ralat pembacaan lisan di laut bising.</div>
+          </div>
+          <div class="kpi-card dark">
+            <div class="kpi-val" style="color: #0b2a4a;"><mark style="background: #fef08a; color: #854d0e; padding: 0 4px; border-radius: 3px;">RM 0</mark></div>
+            <div class="kpi-lbl">Kos Pembangunan</div>
+            <div class="kpi-sub">100% in-house tanpa lesen pihak ketiga.</div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Ringkasan Eksekutif</div>
+        <div class="badge-num">1</div>
+      </footer>
+    </article>
+
+<article id="page-4" class="page" aria-label="Muka Surat 2 - Ringkasan Eksekutif Muka 2">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 1.0</span>
+          <span class="header-title">RINGKASAN EKSEKUTIF</span>
+        </div>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="page-content">
+        <div class="card" style="background: white; border-left: 4px solid var(--success-green); padding: 9px 12px;">
+          <div style="font-weight: bold; font-size: 11pt; color: var(--primary-navy); margin-bottom: 3px;">
+            Impak Strategik Terhadap Penyelamatan Nyawa dan Sumber Operasi
+          </div>
+          <p style="text-align: justify; line-height: 1.15; color: #1e293b;">
+            Dari aspek impak penyelamatan nyawa di laut lepas, penjimatan masa koordinasi ini memaksimumkan peluang kelangsungan hidup mangsa dalam tempoh Waktu Emas Carilamat (Golden Hours of SAR). Nakhoda bot digerakkan secara berpandukan corak pencarian saintifik (Expanding Square dan Parallel Track) tanpa pembaziran waktu meronda di sektor yang salah. Ini turut mengurangkan penggunaan bahan api diesel bot peronda secara ketara dan mengelakkan kelesuan kru bot. Skor indeks kepuasan pengguna melonjak daripada <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">42% (kaedah manual)</mark> kepada <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">98% (sangat berpuas hati)</mark> hasil kemudahan navigasi yang lancar dan mesra pengguna.
+          </p>
+        </div>
+
+        <div class="card" style="background: white; border-left: 4px solid var(--accent-gold); padding: 9px 12px;">
+          <div style="font-weight: bold; font-size: 11pt; color: var(--primary-navy); margin-bottom: 3px;">
+            c) Potensi Pengembangan Projek (Replikasi & Pengkomersialan)
+          </div>
+          <p style="text-align: justify; line-height: 1.15; color: #1e293b;">
+            Sistem ini telah mencapai tahap ketersediaan teknologi penuh (Finished Goods / Deployment Ready) dan beroperasi secara aktif di pelayan awan pengeluaran. Inovasi ini bersedia sepenuhnya untuk direplikasikan ke seluruh pusat operasi maritim negara merangkumi MRCC Putrajaya serta <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">lima (5) Pusat Koordinasi Penyelamat Maritim wilayah</mark> iaitu MRSC Langkawi, MRSC Kuantan, MRSC Johor Bahru, MRSC Kuching, dan MRSC Kota Kinabalu, di samping <mark style="background: #fef08a; color: #854d0e; padding: 1px 4px; border-radius: 3px; font-weight: bold;">14 Pangkalan Hadapan Carilamat (PHC)</mark>. Seni bina terbuka sistem turut membolehkan integrasi data bersama Agensi Pengurusan Bencana Negara (NADMA), Tentera Laut Diraja Malaysia (TLDM), Polis Marin, dan Bomba. Sistem ini mempunyai potensi tinggi untuk didaftarkan perlindungan harta intelek perisian melalui MyIPO serta dijadikan model perkongsian pintar operasi carilamat serantau ASEAN.
+          </p>
+        </div>
+
+        <div class="card card-navy" style="padding: 9px 12px;">
+          <div style="font-size: 9pt; color: #38bdf8; font-weight: bold; text-transform: uppercase;">
+            RINGKASAN ASPIRASI INOVASI HORIZON BAHARU KIK APMM:
+          </div>
+          <div class="grid-3" style="font-size: 8.5pt; margin-top: 3px;">
+            <div style="background: rgba(255,255,255,0.08); border-radius: 4px; padding: 5px 8px;">
+              <strong style="color: #6ee7b7;">✓ KETERSEDIAAN SISTEM:</strong> Sedia diguna pakai serta-merta tanpa sebarang kos lesen.
+            </div>
+            <div style="background: rgba(255,255,255,0.08); border-radius: 4px; padding: 5px 8px;">
+              <strong style="color: #38bdf8;">✓ REPLIKASI NASIONAL:</strong> Sedia diluaskan ke seluruh <mark style="background: #fef08a; color: #854d0e; padding: 1px 3px; border-radius: 2px;">6 Pusat Kawalan MRCC/MRSC</mark> APMM.
+            </div>
+            <div style="background: rgba(255,255,255,0.08); border-radius: 4px; padding: 5px 8px;">
+              <strong style="color: #fde68a;">✓ HARTA INTELEK MyIPO:</strong> Potensi pendaftaran hak cipta dan modul latihan maritim.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Ringkasan Eksekutif</div>
+        <div class="badge-num">2</div>
+      </footer>
+    </article>
+
+<article id="page-5" class="page" aria-label="Muka Surat 3 - Penglibatan Pihak Pengurusan">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (a)</span>
+          <span class="header-title">PENGLIBATAN PIHAK PENGURUSAN TERTINGGI</span>
+        </div>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            a) Penglibatan Pihak Pengurusan Tertinggi
+          </div>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-navy); padding: 10px 14px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            1.1 Sokongan & Kelulusan Pengurusan Tertinggi Maritim Negeri Pahang
+          </div>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 0;">
+            Projek inovasi Maritime SAR Management System telah menerima sokongan penuh dan kelulusan rasmi daripada kepimpinan tertinggi Ibu Pejabat Maritim Negeri Pahang sejak peringkat percambahan idea. Pengarah Maritim Negeri Pahang, Laksamana Pertama (M) Dato' Mazlan bin Mat Rejab, telah menandatangani dan mengesahkan Borang Penyertaan KIK pada 19 Mei 2026 (rujuk Lampiran A). Komitmen ini diperkukuhkan melalui pengeluaran Memo Sokongan Rasmi bernombor rujukan APMM-W3.100-13/5/1 Jld. 3 (8) bertarikh 1 Oktober 2026 (rujuk Lampiran B). Pihak pengurusan mengiktiraf projek ini sebagai pemangkin transformasi digital operasi penyelamatan maritim negeri dan menyokong penuh penyertaan ke peringkat agensi.
+          </p>
+        </div>
+
+        <div class="card card-glow-blue" style="padding: 9px 12px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            1.2 Struktur Organisasi & Keahlian Kumpulan KIK Primer MRSC Kuantan
+          </div>
+          <div class="grid-2" style="font-size: 10.5pt; gap: 8px;">
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 4px; padding: 7px 10px; line-height: 1.15; text-align: justify;">
+              <strong style="color: #0284c7; font-size: 9.5pt; text-transform: uppercase;">Ketua Kumpulan / Pengurus Projek:</strong><br>
+              <strong style="font-size: 11pt; color: var(--primary-navy);">Lt Kdr (M) Mohd Zulhairy bin Abd Halim</strong><br>
+              <span style="font-size: 10pt; color: #334155; line-height: 1.15;"><em>Peranan:</em> Merangka seni bina sistem, memantau pematuhan manual IAMSAR/NAMSAR, menyelaraskan reka bentuk modul SMC Dashboard, dan mengetuai sesi libat urus.</span>
+            </div>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 4px; padding: 7px 10px; line-height: 1.15; text-align: justify;">
+              <strong style="color: #0284c7; font-size: 9.5pt; text-transform: uppercase;">Ahli Kumpulan / Setiausaha:</strong><br>
+              <strong style="font-size: 11pt; color: var(--primary-navy);">Lt Dya (M) Nur Amira Syafikah bt Roslan</strong><br>
+              <span style="font-size: 10pt; color: #334155; line-height: 1.15;"><em>Peranan:</em> Mengumpul data audit operasi, menganalisis masa SitRep, menyelaras maklum balas nakhoda bot, dan menyediakan dokumentasi teknikal.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-blue); padding: 10px 14px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            1.3 Libat Urus Bersama Bahagian CARILAMAT & Bantuan Bencana (BCLBB) Ibu Pejabat
+          </div>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 0;">
+            Bagi memastikan projek ini mematuhi dasar strategik carilamat kebangsaan, kumpulan telah melaksanakan sesi pembentangan dan demonstrasi langsung kepada Ketua Penolong Pengarah Kanan, Bahagian CARILAMAT dan Bantuan Bencana (BCLBB) Ibu Pejabat APMM sempena Latihan Simulasi SAREX Jong Semerak di Maritim Negeri Kelantan pada 26–27 Julai 2026 (rujuk Lampiran C). Malah, semasa sesi pembentangan rumusan keseluruhan Latihan SAREX oleh Ketua Tim Penilai kepada Pengarah BCLBB serta barisan tetamu kehormat (VVIP), keupayaan sistem yang dibangunkan ini turut diketengahkan secara khusus. Pihak BCLBB menyambut baik inisiatif ini dan memperakukan bahawa kaedah pengiraan corak carian digital adalah selaras dengan manual SAR antarabangsa.
+          </p>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 8px 0 0 0;">
+            Seterusnya, taklimat teknikal atas talian diadakan pada 7 Oktober 2026 bersama pusat operasi serantau iaitu MRCC Putrajaya, MRSC Langkawi, MRSC Johor Bahru, MRSC Kuching, serta MRSC Kota Kinabalu (rujuk Lampiran D).
+          </p>
+        </div>
+
+        <div class="card card-glow-blue" style="padding: 9px 12px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            1.4 Peruntukan Sumber, Masa dan Fasiliti oleh Pihak Pengurusan
+          </div>
+          <div class="grid-3" style="font-size: 10pt; gap: 8px;">
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 4px; padding: 7px 10px; line-height: 1.15; text-align: justify;">
+              <strong style="color: #0284c7; font-size: 9.5pt; text-transform: uppercase;">Pelepasan Waktu Tugas:</strong><br>
+              <span style="font-size: 9.5pt; color: #334155; line-height: 1.15;">Kebenaran khas diberikan kepada ahli untuk menjalankan sesi pembangunan kod dan pengujian sistem tanpa mengganggu tugas operasi harian.</span>
+            </div>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 4px; padding: 7px 10px; line-height: 1.15; text-align: justify;">
+              <strong style="color: #0284c7; font-size: 9.5pt; text-transform: uppercase;">Fasiliti Bilik Gerakan:</strong><br>
+              <span style="font-size: 9.5pt; color: #334155; line-height: 1.15;">Penyediaan ruang kerja di Pusat Operasi MRSC Kuantan, capaian internet pantas, dan integrasi bersama skrin pemantauan taktikal.</span>
+            </div>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 4px; padding: 7px 10px; line-height: 1.15; text-align: justify;">
+              <strong style="color: #0284c7; font-size: 9.5pt; text-transform: uppercase;">Kebenaran Aset Laut:</strong><br>
+              <span style="font-size: 9.5pt; color: #334155; line-height: 1.15;">Bot peronda Maritim Negeri Pahang dibenarkan menguji aplikasi mudah alih dalam pelayaran rondaan sebenar di perairan Terengganu-Pahang.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Penglibatan Pihak Pengurusan Tertinggi</div>
+        <div class="badge-num">3</div>
+      </footer>
+    </article>
+
+<article id="page-6" class="page" aria-label="Muka Surat 4 - Signifikan Pemilihan Projek Muka 1">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (b)</span>
+          <span class="header-title">SIGNIFIKAN PROJEK</span>
+        </div>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            b) Signifikan Pemilihan Projek & Pembuktian
+          </div>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-navy); padding: 10px 14px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            2.1 Kaitan dengan Fungsi Utama Jabatan / Agensi (Seksyen 6 Akta 633)
+          </div>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 0;">
+            Fungsi hakiki Agensi Penguatkuasaan Maritim Malaysia termaktub secara jelas di bawah Seksyen 6(1)(c) Akta Agensi Penguatkuasaan Maritim Malaysia 2004 (Akta 633), iaitu bertanggungjawab menyelaras dan melaksanakan operasi carilamat maritim bagi mencari dan menyelamat mana-mana kapal atau orang yang dalam bahaya di laut.
+          </p>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 8px 0 0 0;">
+            Visi agensi adalah <em>“Menjadi antara agensi penguatkuasaan Maritim yang terbaik di dunia”</em>, manakala misinya adalah <em>“Menguatkuasakan undang-undang serta menyelamat nyawa dan harta benda di laut bagi memastikan kesejahteraan perairan negara”</em>, berlandaskan moto agensi iaitu <strong>“Mengawal, Melindung, Menyelamat”</strong>. Justeru, pemilihan projek Maritime SAR Management System ini bertepatan sepenuhnya dengan mandat statutori dan aspirasi strategik agensi bagi memastikan operasi carilamat maritim sentiasa dilaksanakan secara pantas, tepat, dan berkesan demi memelihara keselamatan nyawa di laut.
+          </p>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-blue); padding: 10px 14px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            2.2 Memenuhi Kehendak Pelanggan Luaran (Komuniti Maritim & Waris)
+          </div>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 0;">
+            Pelanggan utama perkhidmatan carilamat APMM merangkumi komuniti nelayan tempatan, kru perkapalan komersial, penumpang bot pelancongan pulau, dan peminat sukan air. Apabila insiden bot karam berlaku, ahli keluarga dan komuniti mengharapkan tindakan pantas tanpa sebarang kelewatan birokrasi. Piagam Pelanggan APMM menetapkan bahawa setiap maklumat kecemasan maritim yang disahkan sahih hendaklah ditindaklanjuti dengan penggerakan aset penyelamat dalam tempoh kurang daripada 60 minit. Kaedah manual sebelum ini menyukarkan pematuhan piagam kerana penyediaan plotan peta dan transkripsi koordinat mengambil masa lebih 30 minit sebelum bot dapat belayar tepat ke sasaran.
+          </p>
+        </div>
+
+        <div class="card card-glow-blue" style="padding: 9px 12px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            2.3 Memenuhi Kehendak Pemegang Taruh Dalaman (Kepimpinan & Pengurusan Tertinggi)
+          </div>
+          <div class="grid-2" style="font-size: 10pt; gap: 8px;">
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 4px; padding: 7px 10px; line-height: 1.15; text-align: justify;">
+              <strong style="color: #0284c7; font-size: 9.5pt; text-transform: uppercase;">Pengurusan Maritim Negeri (Pengarah Negeri & TPO):</strong><br>
+              <span style="font-size: 9.5pt; color: #334155; line-height: 1.15;">
+                Memerlukan gambaran situasi operasi masa nyata (<em>Live Situational Awareness</em>) bagi membuat keputusan taktikal pantas, mengoptimumkan pengagihan sumber aset bot, serta memastikan pematuhan KPI carilamat negeri tercapai tanpa risiko kegagalan operasi.
+              </span>
+            </div>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 4px; padding: 7px 10px; line-height: 1.15; text-align: justify;">
+              <strong style="color: #0284c7; font-size: 9.5pt; text-transform: uppercase;">Pengurusan Ibu Pejabat (BCLBB & Pucuk Pimpinan):</strong><br>
+              <span style="font-size: 9.5pt; color: #334155; line-height: 1.15;">
+                Memerlukan penyaluran data laporan situasi (<em>SitRep</em>) yang pantas, tepat dan seragam bagi taklimat segera kepada pucuk pimpinan agensi, KDN, dan NADMA, di samping memastikan operasi mematuhi piawaian SAR antarabangsa (IMO/IAMSAR).
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Signifikan Projek</div>
+        <div class="badge-num">4</div>
+      </footer>
+    </article>
+
+<article id="page-7" class="page" aria-label="Muka Surat 7 - Signifikan Pemilihan Projek Muka 2">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (b)</span>
+          <span class="header-title">SIGNIFIKAN PROJEK</span>
+        </div>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="page-content">
+        <div class="card" style="background: white; border-top: 3px solid var(--accent-gold); padding: 10px 14px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            2.4 Penjajaran Bersama Agenda & Matlamat Nasional
+          </div>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 0;">
+            Penghasilan inovasi ini dijajarkan secara utuh dengan dasar-dasar keselamatan dan transformasi pentadbiran peringkat persekutuan. Pertama, sistem ini mematuhi Arahan Majlis Keselamatan Negara No. 20 yang kini dikoordinasikan di bawah Arahan NADMA No. 1 (Mekanisme Pengurusan Bencana Negara), yang menuntut kesiapsiagaan agensi peneraju memiliki keupayaan komunikasi data bersepadu. Kedua, projek ini menyokong Pelan Strategik Pendigitalan Sektor Awam dan Rancangan Malaysia Ke-12 (RMK-12) melalui pemerkasaan GovTech kos rendah berimpak tinggi. Ketiga, inovasi ini mendukung Manual NAMSAR Kebangsaan dan konvensyen International Maritime Organization (IMO) berhubung piawaian keselamatan maritim antarabangsa (SOLAS 1974).
+          </p>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-navy); padding: 10px 14px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            2.5 Kaitan dengan Keadaan dan Ekosistem Semasa Operasi
+          </div>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 0;">
+            Ekosistem operasi carilamat maritim di lapangan tidak hanya melibatkan aset APMM, malah turut menggembleng aset laut daripada pelbagai agensi sahabat seperti Pasukan Polis Marin (PPM), Tentera Laut Diraja Malaysia (TLDM), Jabatan Bomba dan Penyelamat Malaysia (JBPM), Angkatan Pertahanan Awam Malaysia (APM), serta komuniti nelayan tempatan. Walau bagaimanapun, realiti operasi menunjukkan sebahagian besar kru aset agensi sahabat tidak mempunyai pendedahan atau latihan khusus mengenai manual antarabangsa IAMSAR mahupun doktrin saintifik <em>Search Pattern</em>.
+          </p>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 8px 0 0 0;">
+            Sebelum ini, apabila pusat operasi menyalurkan sektor pencarian (<em>Search Area</em>), aset yang diatur gerak cenderung belayar secara rawak atau sekadar berpusing-pusing di kawasan tersebut tanpa haluan sistematik. Situasi ini berlaku sedangkan Pegawai Penyelaras Misi Carilamat (SMC) telah merangka pelan carian rapi merangkumi penetapan corak carian saintifik (seperti <em>Expanding Square</em> atau <em>Parallel Track</em>), kelajuan carian (<em>Search Speed</em>), jarak sapuan, dan anggaran masa pencarian. Melalui pembangunan sistem ini, jurang teknikal antara agensi berjaya dirapatkan sepenuhnya—setiap Unit Carilamat (SRU) kini boleh memvisualisasikan serta mematuhi pelan carian yang ditetapkan oleh SMC secara masa nyata hanya dengan merujuk paparan navigasi pada telefon pintar masing-masing.
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Signifikan Projek</div>
+        <div class="badge-num">5</div>
+      </footer>
+    </article>
+
+<article id="page-8" class="page" aria-label="Muka Surat 8 - Signifikan Pemilihan Projek Muka 3">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (b)</span>
+          <span class="header-title">SIGNIFIKAN PROJEK</span>
+        </div>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="page-content">
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-navy); padding: 10px 14px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            2.6 Kaedah Pemilihan Projek & Pembuktian Data Kewujudan Isu
+          </div>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 0;">
+            <mark style="background: #fef08a; color: #854d0e; padding: 2px 4px; border-radius: 3px;">Berdasarkan rekod log operasi MRSC Kuantan bagi tempoh tahun 2024 hingga 2025, sebanyak 48 insiden carilamat telah diaktifkan di perairan Pahang. Audit masa operasi mendapati purata masa penyediaan laporan Situation Report (SitRep) mengambil masa 180 minit (3 jam) kerana pegawai terpaksa menaip semula fakta insiden secara manual. Selain itu, masa transmisi koordinat dari bilik gerakan ke bot laut mengambil masa 30 hingga 45 minit berikutan semakan radio berulang-ulang bagi mengelakkan salah dengar.</mark>
+          </p>
+          <p style="text-align: justify; line-height: 1.15; font-size: 12pt; color: #1e293b; margin: 6px 0 0 0;">
+            Kewujudan isu ini diperkukuhkan melalui <strong>Kajian Soal Selidik Analisis Keperluan (Voice of Customer - VoC)</strong> melibatkan pegawai operasi BCLBB Ibu Pejabat Putrajaya, MRCC dan MRSC, di mana <strong>100% responden</strong> mengesahkan kaedah pelaporan manual membebankan anggota serta ketiadaan penjejakan masa nyata (<em>real-time tracking</em>) mendatangkan risiko pengulangan sektor carian dan menjejaskan keselamatan operasi.
+          </p>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--accent-gold); padding: 8px 12px; margin-top: 6px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 4px;">
+            Analisis Masalah Menggunakan Kaedah 5W1H
+          </div>
+          <table class="info-table" style="font-size: 12pt;">
+            <thead>
+              <tr>
+                <th style="width: 14%; padding: 5px 6px;">Elemen</th>
+                <th style="width: 33%; padding: 5px 6px;">Persoalan Isu</th>
+                <th style="width: 53%; padding: 5px 6px;">Dapatan Data Operasi Lapangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>WHAT</strong></td>
+                <td>Apakah isu utama operasi SAR?</td>
+                <td>Kelewatan pelaporan (3 jam) & risiko salah dengar koordinat radio VHF.</td>
+              </tr>
+              <tr>
+                <td><strong>WHO</strong></td>
+                <td>Siapa yang terjejas secara langsung?</td>
+                <td>Pegawai penyelaras SMC, komander bot laut (SRU) dan mangsa di laut.</td>
+              </tr>
+              <tr>
+                <td><strong>WHERE</strong></td>
+                <td>Di mana masalah ini dikesan berlaku?</td>
+                <td>Bilik Operasi MRSC Kuantan dan perairan laut operasi Zon Maritim Pahang.</td>
+              </tr>
+              <tr>
+                <td><strong>WHEN</strong></td>
+                <td>Bilakah keadaan menjadi paling kritikal?</td>
+                <td>Waktu malam, cuaca ribut monsun, dan insiden membabitkan mangsa lemas.</td>
+              </tr>
+              <tr>
+                <td><strong>WHY</strong></td>
+                <td>Mengapa kaedah legasi tidak memadai?</td>
+                <td>Ketiadaan integrasi digital masa nyata; plotan peta dan pengiraan dibuat manual.</td>
+              </tr>
+              <tr>
+                <td><strong>HOW</strong></td>
+                <td>Bagaimana inovasi menyelesaikan isu?</td>
+                <td>Membina sistem web dashboard awan bersepadu aplikasi mudah alih kos sifar.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--danger-red); padding: 8px 12px; margin-top: 6px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
+            <span>RAJAH TULANG IKAN (ISHIKAWA DIAGRAM) - ANALISIS PUNCA AKAR UMBI</span>
+            <span style="color: var(--danger-red); font-size: 10pt; font-weight: bold; background: #fee2e2; padding: 2px 8px; border-radius: 4px; border: 1px solid #f87171;">MASALAH: OPERASI SAR LEWAT & BERISIKO RALAT</span>
+          </div>
+
+          <!-- Rajah Visual Ilustrasi Tulang Ikan (SVG) -->
+          <div style="width: 100%; margin-top: 4px;">
+            <svg viewBox="0 0 860 380" style="width: 100%; height: auto; display: block; font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="arrowSpine" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626" />
+                </marker>
+                <marker id="arrowBlueBone" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 2 L 7 5 L 0 8 z" fill="#0284c7" />
+                </marker>
+                <marker id="arrowGoldBone" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 2 L 7 5 L 0 8 z" fill="#d97706" />
+                </marker>
+                <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+                  <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.12"/>
+                </filter>
+              </defs>
+
+              <!-- Tulang Belakang Utama (Spine) -->
+              <line x1="25" y1="190" x2="685" y2="190" stroke="#dc2626" stroke-width="6" marker-end="url(#arrowSpine)" />
+
+              <!-- Ekor Ikan di Belakang -->
+              <polygon points="25,190 6,150 16,190 6,230" fill="#dc2626" />
+
+              <!-- Tulang Cabang Atas 1: MANUSIA -->
+              <line x1="180" y1="134" x2="280" y2="190" stroke="#0284c7" stroke-width="5" marker-end="url(#arrowBlueBone)" />
+
+              <!-- Tulang Cabang Atas 2: PERALATAN -->
+              <line x1="515" y1="134" x2="600" y2="190" stroke="#0284c7" stroke-width="5" marker-end="url(#arrowBlueBone)" />
+
+              <!-- Tulang Cabang Bawah 1: KAEDAH -->
+              <line x1="180" y1="246" x2="280" y2="190" stroke="#d97706" stroke-width="5" marker-end="url(#arrowGoldBone)" />
+
+              <!-- Tulang Cabang Bawah 2: PERSEKITARAN -->
+              <line x1="515" y1="246" x2="600" y2="190" stroke="#d97706" stroke-width="5" marker-end="url(#arrowGoldBone)" />
+
+              <!-- KELOMPOK 1: MANUSIA (MAN) -->
+              <g filter="url(#shadow)">
+                <rect x="25" y="8" width="310" height="34" rx="5" fill="#0284c7" />
+                <text x="180" y="32" fill="#ffffff" font-size="20" font-weight="bold" text-anchor="middle">MANUSIA (MAN)</text>
+              </g>
+              <!-- Punca Manusia 1 -->
+              <rect x="25" y="48" width="310" height="36" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+              <text x="37" y="72" fill="#0369a1" font-size="18" font-weight="bold">• Keletihan taip SitRep (3 jam)</text>
+              <!-- Punca Manusia 2 -->
+              <rect x="25" y="90" width="310" height="36" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+              <text x="37" y="114" fill="#0369a1" font-size="18" font-weight="bold">• Ralat dengar radio VHF</text>
+
+              <!-- KELOMPOK 2: PERALATAN (MACHINE) -->
+              <g filter="url(#shadow)">
+                <rect x="360" y="8" width="310" height="34" rx="5" fill="#0284c7" />
+                <text x="515" y="32" fill="#ffffff" font-size="20" font-weight="bold" text-anchor="middle">PERALATAN (MACHINE)</text>
+              </g>
+              <!-- Punca Peralatan 1 -->
+              <rect x="360" y="48" width="310" height="36" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+              <text x="372" y="72" fill="#0369a1" font-size="18" font-weight="bold">• Tiada integrasi GIS bilik operasi</text>
+              <!-- Punca Peralatan 2 -->
+              <rect x="360" y="90" width="310" height="36" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
+              <text x="372" y="114" fill="#0369a1" font-size="18" font-weight="bold">• Tiada navigasi luar talian bot</text>
+
+              <!-- KELOMPOK 3: KAEDAH (METHOD) -->
+              <!-- Punca Kaedah 1 -->
+              <rect x="25" y="254" width="310" height="36" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5" />
+              <text x="37" y="278" fill="#b45309" font-size="18" font-weight="bold">• Aliran kerja leceh &amp; berulang</text>
+              <!-- Punca Kaedah 2 -->
+              <rect x="25" y="296" width="310" height="36" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5" />
+              <text x="37" y="320" fill="#b45309" font-size="18" font-weight="bold">• Agensi lain tiada ilmu IAMSAR</text>
+              <!-- Kategori Kaedah Header -->
+              <g filter="url(#shadow)">
+                <rect x="25" y="338" width="310" height="34" rx="5" fill="#d97706" />
+                <text x="180" y="362" fill="#ffffff" font-size="20" font-weight="bold" text-anchor="middle">KAEDAH (METHOD)</text>
+              </g>
+
+              <!-- KELOMPOK 4: PERSEKITARAN (ENVIRONMENT) -->
+              <!-- Punca Persekitaran 1 -->
+              <rect x="360" y="254" width="310" height="36" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5" />
+              <text x="372" y="278" fill="#b45309" font-size="18" font-weight="bold">• Laut bergelora Monsun Timur</text>
+              <!-- Punca Persekitaran 2 -->
+              <rect x="360" y="296" width="310" height="36" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5" />
+              <text x="372" y="320" fill="#b45309" font-size="18" font-weight="bold">• Zon carian ratusan batu nautika</text>
+              <!-- Kategori Persekitaran Header -->
+              <g filter="url(#shadow)">
+                <rect x="360" y="338" width="310" height="34" rx="5" fill="#d97706" />
+                <text x="515" y="362" fill="#ffffff" font-size="20" font-weight="bold" text-anchor="middle">PERSEKITARAN (ENVIRONMENT)</text>
+              </g>
+
+              <!-- KEPALA IKAN (PUNCA AKHIR / AKIBAT) -->
+              <g filter="url(#shadow)">
+                <polygon points="690,95 855,190 690,285" fill="#fee2e2" stroke="#dc2626" stroke-width="3" />
+                <circle cx="828" cy="190" r="6" fill="#dc2626" />
+                <text x="760" y="152" fill="#991b1b" font-size="18" font-weight="bold" text-anchor="middle">MASALAH:</text>
+                <text x="760" y="184" fill="#991b1b" font-size="20" font-weight="bold" text-anchor="middle">OPERASI SAR LEWAT</text>
+                <text x="760" y="214" fill="#b91c1c" font-size="19" font-weight="bold" text-anchor="middle">&amp; BERISIKO RALAT</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Signifikan Projek</div>
+        <div class="badge-num">6</div>
+      </footer>
+    </article>
+
+<article id="page-9" class="page" aria-label="Muka Surat 9 - Signifikan Pemilihan Projek Muka 4">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (b)</span>
+          <span class="header-title">SIGNIFIKAN PROJEK</span>
+        </div>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Kerangka Strategik ERRC & Sasaran Outcome
+          </div>
+          <div class="subtitle">Aplikasi Four Actions Framework (Blue Ocean Strategy) dan penentuan sasaran KPI projek.</div>
+        </div>
+
+        <div class="errc-grid">
+          <div class="errc-box errc-eliminate">
+            <div class="errc-header"><span>HAPUS (ELIMINATE)</span><span>✖</span></div>
+            <ul style="padding-left: 14px; margin-top: 2px;">
+              <li>Penggunaan buku log fizikal & borang kertas yang mudah basah di laut.</li>
+              <li>Ralat transkripsi sebutan digit koordinat lisan melalui radio VHF.</li>
+              <li>Komunikasi bertingkat yang melambatkan pengesahan arahan carian.</li>
+            </ul>
+          </div>
+          <div class="errc-box errc-raise">
+            <div class="errc-header"><span>TINGKAT (RAISE)</span><span>▲</span></div>
+            <ul style="padding-left: 14px; margin-top: 2px;">
+              <li>Kelajuan penyaluran data dari SMC ke telefon bot laut (< 1 minit).</li>
+              <li>Ketepatan corak carian mengikut standard antarabangsa IAMSAR.</li>
+              <li>Integriti rekod jejak masa insiden bagi tujuan siasatan maritim.</li>
+            </ul>
+          </div>
+          <div class="errc-box errc-reduce">
+            <div class="errc-header"><span>KURANG (REDUCE)</span><span>▼</span></div>
+            <ul style="padding-left: 14px; margin-top: 2px;">
+              <li>Masa penyediaan laporan operasi SitRep daripada 3 jam kepada 15 minit.</li>
+              <li>Pembaziran minyak diesel bot akibat kesilapan laluan sektor pencarian.</li>
+              <li>Beban stres mental juruoperasi bilik gerakan semasa kecemasan besar.</li>
+            </ul>
+          </div>
+          <div class="errc-box errc-create">
+            <div class="errc-header"><span>CIPTA (CREATE)</span><span>★</span></div>
+            <ul style="padding-left: 14px; margin-top: 2px;">
+              <li>SMC Operational Dashboard berasaskan awan dengan GIS interaktif.</li>
+              <li>Aplikasi SRU Navigator luar talian dengan fungsi GPS kompas magnetik.</li>
+              <li>Penjana automatik laporan format standard NAMSAR dengan eksport PDF.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-navy); padding: 8px 10px;">
+          <div style="font-weight: bold; font-size: 10pt; color: var(--primary-navy); margin-bottom: 4px;">
+            2.10 Matriks Sasaran Outcome KIK APMM 2026 (Baseline vs Sasaran vs Capaian)
+          </div>
+          <table class="info-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Parameter Penilaian</th>
+                <th style="width: 24%;">Kaedah Legasi (Baseline)</th>
+                <th style="width: 24%;">Sasaran Asal KIK</th>
+                <th style="width: 24%;">Pencapaian Inovasi Sebenar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Masa Laporan SitRep</strong></td>
+                <td style="color: var(--danger-red); font-weight: bold;">180 Minit (3 Jam)</td>
+                <td>30 Minit (-83.3%)</td>
+                <td style="color: var(--success-green); font-weight: bold;">15 Minit (-91.6%)</td>
+              </tr>
+              <tr>
+                <td><strong>Saluran Koordinat ke Bot</strong></td>
+                <td style="color: var(--danger-red); font-weight: bold;">30 - 45 Minit</td>
+                <td>&lt; 5 Minit</td>
+                <td style="color: var(--success-green); font-weight: bold;">&lt; 1 Minit (Instant)</td>
+              </tr>
+              <tr>
+                <td><strong>Ralat Bacaan Koordinat</strong></td>
+                <td style="color: var(--danger-red); font-weight: bold;">Kerap Berlaku</td>
+                <td>&lt; 5% Ralat</td>
+                <td style="color: var(--success-green); font-weight: bold;">0% (Sifar Ralat)</td>
+              </tr>
+              <tr>
+                <td><strong>Kos Pembangunan</strong></td>
+                <td style="color: #64748b;">Anggaran RM150k</td>
+                <td>Bawah RM10,000</td>
+                <td style="color: var(--success-green); font-weight: bold;">RM 0 (In-House Asli)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Signifikan Projek</div>
+        <div class="badge-num">7</div>
+      </footer>
+    </article>
+
+<article id="page-10" class="page" aria-label="Muka Surat 10 - Tindakan Penyelesaian Muka 1">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (c)</span>
+          <span class="header-title">TINDAKAN PENYELESAIAN: DESIGN THINKING & SCAMPER</span>
+        </div>
+        <div class="header-right">WAJARAN: [ 23 MARKAH ]</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            c) Tindakan Penyelesaian & Inovasi Kreatif
+          </div>
+          <div class="subtitle">Pendekatan Design Thinking dan aplikasi alat pemikiran kreatif SCAMPER dalam reka cipta sistem.</div>
+        </div>
+
+        <div class="card" style="background: white;">
+          <div style="font-weight: bold; font-size: 10pt; color: var(--primary-navy); margin-bottom: 2px;">
+            3.1 Pendekatan Reka Bentuk Penyelesaian (Design Thinking & Metodologi Agile)
+          </div>
+          <p style="text-align: justify; line-height: 1.15; color: #334155; font-size: 9.5pt;">
+            Kumpulan KIK mengaplikasikan kerangka Design Thinking yang berpusatkan pengguna lapangan. Fasa pertama, Empathize, mendalami kesukaran nakhoda bot mencatat koordinat di bawah deruan enjin dan hempasan ombak. Fasa kedua, Define, mengenal pasti punca kelewatan iaitu kebergantungan kepada proses manual bertingkat. Fasa ketiga, Ideate, mencetuskan idea penggabungan papan pemuka kawalan awan bersama aplikasi mudah alih luar talian. Fasa keempat, Prototype, membangunkan modul sistem secara modular dan berperingkat. Fasa kelima, Test, menguji prototaip secara berterusan dalam sesi latihan simulasi dan operasi sebenar di laut.
+          </p>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-blue); padding: 7px 10px;">
+          <div style="font-weight: bold; font-size: 10pt; color: var(--primary-navy); margin-bottom: 3px;">
+            3.2 Aplikasi Alat Pemikiran Kreatif SCAMPER dalam Pembangunan Inovasi
+          </div>
+          <table class="info-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Prinsip SCAMPER</th>
+                <th style="width: 75%;">Aplikasi Khusus dalam Maritime SAR Management System</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Substitute (Ganti)</strong></td>
+                <td>Menggantikan peta kertas manual dan buku log fizikal dengan paparan peta digital GIS interaktif berasaskan Web OpenSeaMap dan peranti mudah alih.</td>
+              </tr>
+              <tr>
+                <td><strong>Combine (Gabung)</strong></td>
+                <td>Menggabungkan fungsi pengiraan Datum, penetapan sektor carian saintifik, dan komunikasi mesej segera ke dalam satu papan pemuka bersepadu.</td>
+              </tr>
+              <tr>
+                <td><strong>Adapt (Adaptasi)</strong></td>
+                <td>Mengadaptasi teknologi Progressive Web App (PWA) moden agar aplikasi di bot boleh terus berfungsi merekod koordinat walaupun bot keluar liputan internet.</td>
+              </tr>
+              <tr>
+                <td><strong>Modify (Ubah Suai)</strong></td>
+                <td>Mengubah suai proses penyediaan laporan insiden daripada penulisan teks manual kepada penjanaan automatik (auto-populate) berstempel masa.</td>
+              </tr>
+              <tr>
+                <td><strong>Put to Another Use</strong></td>
+                <td>Memanfaatkan data log operasi lampau sebagai pangkalan data analitik bagi tujuan latihan simulasi (SAREX) pegawai baharu dan audit siasatan maritim.</td>
+              </tr>
+              <tr>
+                <td><strong>Eliminate (Hapus)</strong></td>
+                <td>Menghapuskan kebergantungan kepada perisian komersial berlesen mahal dengan membina platform berasaskan seni bina sumber terbuka kos sifar (RM0).</td>
+              </tr>
+              <tr>
+                <td><strong>Reverse (Susun)</strong></td>
+                <td>Menyusun semula aliran kerja: SMC mengesahkan plotan secara visual dahulu sebelum memancarkan arahan terus ke skrin nakhoda, mengelakkan kekeliruan.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Perincian Projek: Bahagian (c) Muka 1/4</div>
+        <div class="badge-num">8</div>
+      </footer>
+    </article>
+
+<article id="page-11" class="page" aria-label="Muka Surat 11 - Tindakan Penyelesaian Muka 2">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (c)</span>
+          <span class="header-title">CARTA BATU TANDA & SENI BINA SISTEM TEKNOLOGI</span>
+        </div>
+        <div class="header-right">STRUKTUR ARKITEKTUR</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Garis Masa Pelaksanaan & Seni Bina Sistem
+          </div>
+          <div class="subtitle">Carta batu tanda pembangunan serta seni bina perisian dwi-aplikasi Cloudflare dan Vercel.</div>
+        </div>
+
+        <div class="card card-navy" style="padding: 7px 10px;">
+          <div style="font-size: 8.5pt; color: #38bdf8; font-weight: bold; text-transform: uppercase;">
+            3.3 JADUAL PERBATUAN PELAKSANAAN PROJEK KIK (MEI – OKTOBER 2026):
+          </div>
+          <div class="grid-4" style="font-size: 8pt; margin-top: 3px;">
+            <div style="background: rgba(255,255,255,0.08); padding: 5px; border-radius: 4px;">
+              <strong>MEI 2026:</strong><br>
+              Penubuhan kumpulan, kelulusan rasmi Ketua Jabatan, dan audit kelemahan proses log manual.
+            </div>
+            <div style="background: rgba(255,255,255,0.08); padding: 5px; border-radius: 4px;">
+              <strong>JUN 2026:</strong><br>
+              Pengekodan prototaip alfa SMC Command Dashboard dan SRU Mobile Navigator PWA.
+            </div>
+            <div style="background: rgba(255,255,255,0.08); padding: 5px; border-radius: 4px;">
+              <strong>JULAI 2026:</strong><br>
+              Uji cuba simulasi SAREX Jong Semerak dan pembentangan kepada BCLBB Ibu Pejabat.
+            </div>
+            <div style="background: rgba(255,255,255,0.08); padding: 5px; border-radius: 4px;">
+              <strong>OKT 2026:</strong><br>
+              Kuat kuasa memo rasmi, penempatan live production, dan pengujian rentas-MRSC.
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-navy);">
+          <div style="font-weight: bold; font-size: 10pt; color: var(--primary-navy); margin-bottom: 2px;">
+            3.4 Seni Bina Sistem & Integrasi Dwi-Platform Bersepadu
+          </div>
+          <p style="text-align: justify; line-height: 1.15; color: #334155; font-size: 9.5pt;">
+            Sistem ini dibangunkan dengan struktur kejuruteraan perisian moden tanpa kos lesen pelayan fizikal. SMC Command Dashboard dihoskan pada infrastruktur Cloudflare Pages yang menawarkan prestasi pelayan edge global dengan kebolehcapaian 99.9%. SRU Mobile Navigator dibangunkan sebagai Progressive Web App (PWA) di pelayan Vercel yang boleh dipasang terus pada telefon pintar atau tablet Android dan iOS anggota bot tanpa perlu melalui gedung aplikasi pihak ketiga.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card-glow-blue" style="padding: 7px 9px;">
+            <strong style="color: #0284c7; font-size: 9pt;">SMC COMMAND DASHBOARD (PUSAT GERAKAN):</strong>
+            <p style="font-size: 8.5pt; color: #475569; margin-top: 2px; line-height: 1.15;">
+              Menyediakan paparan pemetaan taktikal GIS interaktif, pengiraan hanyutan Datum mengikut formula saintifik NAMSAR, pembahagian zon rondaan pelbagai aset bot, dan penjanaan laporan Situation Report secara serta-merta.
+            </p>
+          </div>
+          <div class="card card-glow-blue" style="padding: 7px 9px;">
+            <strong style="color: #0284c7; font-size: 9pt;">SRU MOBILE NAVIGATOR (ASET LAPANGAN):</strong>
+            <p style="font-size: 8.5pt; color: #475569; margin-top: 2px; line-height: 1.15;">
+              Menyediakan sokongan navigasi kompas magnetik digital, penjejakan titik wayar (waypoints), penerimaan koordinat segera dari bilik gerakan, dan keupayaan beroperasi dalam mod luar talian (offline cache).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Perincian Projek: Bahagian (c) Muka 2/4</div>
+        <div class="badge-num">9</div>
+      </footer>
+    </article>
+
+<article id="page-12" class="page" aria-label="Muka Surat 12 - Tindakan Penyelesaian Muka 3">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (c)</span>
+          <span class="header-title">ALIRAN OPERASI DIGITAL & KESELAMATAN SIBER</span>
+        </div>
+        <div class="header-right">PROSES KERJA PINTAR</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Aliran Operasi Digital & Keselamatan Siber
+          </div>
+          <div class="subtitle">Aliran kerja 5-langkah bersepadu dari penerimaan aduan hingga penjanaan laporan SitRep.</div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;">
+          <div class="flow-step">
+            <div class="flow-step-num">1</div>
+            <div style="font-weight: bold; font-size: 8pt; color: var(--primary-navy);">Panggilan MERS 999</div>
+            <div style="font-size: 7.5pt; color: var(--text-muted); margin-top: 1px;">Terima aduan kecemasan maritim.</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-num">2</div>
+            <div style="font-weight: bold; font-size: 8pt; color: var(--primary-navy);">Plotan Pintar SMC</div>
+            <div style="font-size: 7.5pt; color: var(--text-muted); margin-top: 1px;">Kira Datum, drift arus & sektor carian.</div>
+          </div>
+          <div class="flow-step" style="border: 1px solid var(--accent-cyan); background: #ecfeff;">
+            <div class="flow-step-num" style="background: var(--accent-cyan);">3</div>
+            <div style="font-weight: bold; font-size: 8pt; color: #0891b2;">Saluran Digital &lt;1m</div>
+            <div style="font-size: 7.5pt; color: var(--text-muted); margin-top: 1px;">Pancaran koordinat terus ke telefon bot.</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-num">4</div>
+            <div style="font-weight: bold; font-size: 8pt; color: var(--primary-navy);">Navigasi Taktikal</div>
+            <div style="font-size: 7.5pt; color: var(--text-muted); margin-top: 1px;">Bot belayar ikut sektor GPS tepat.</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-num">5</div>
+            <div style="font-weight: bold; font-size: 8pt; color: var(--primary-navy);">Auto-Jana SitRep</div>
+            <div style="font-size: 7.5pt; color: var(--text-muted); margin-top: 1px;">Laporan siap 15 minit (PDF/Word).</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="mockup-frame">
+            <div class="mockup-header">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span style="font-size: 7.5pt; color: #94a3b8; margin-left: 4px;">SMC Command Dashboard (Paparan Bilik Operasi)</span>
+            </div>
+            <div style="font-size: 7.5pt; line-height: 1.35; color: #38bdf8;">
+              <div>[STESEN AKTIF]: MRSC Kuantan (Maritim Negeri Pahang)</div>
+              <div>[KES AKTIF #65]: Bot Karam - Perairan Tok Bali / Cherang Ruku</div>
+              <div style="color: #4ade80;">▶ Penjejakan Aset: KM BAGAHAK, PERKASA 1249, PL 607</div>
+              <div style="color: #fde68a;">▶ Pengiraan Corak: Expanding Square Pattern (Radius 5 NM)</div>
+              <div style="color: #cbd5e1; margin-top: 2px; border-top: 1px dashed #475569; padding-top: 2px;">
+                ⚡ Status Penjanaan SitRep: AUTOMATIK (Format NAMSAR Siap)
+              </div>
+            </div>
+          </div>
+
+          <div class="mockup-frame">
+            <div class="mockup-header">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span style="font-size: 7.5pt; color: #94a3b8; margin-left: 4px;">SRU Navigator Mobile UI (Peranti Anggota Bot)</span>
+            </div>
+            <div style="font-size: 7.5pt; line-height: 1.35; color: #38bdf8;">
+              <div>[ASET]: PERKASA 1249 | SPEED: 24.5 Knots | COURSE: 045°</div>
+              <div>[KEDUDUKAN GPS]: Lat 03°51.864'N | Long 103°14.994'E</div>
+              <div style="color: #4ade80;">✓ Mod Cache Luar Talian: AKTIF (Sedia Beroperasi Tanpa 4G)</div>
+              <div style="color: #fde68a;">📍 Sasaran Seterusnya: Titik WP 4/20 (Jarak: 1.8 NM)</div>
+              <div style="color: #cbd5e1; margin-top: 2px; border-top: 1px dashed #475569; padding-top: 2px;">
+                📡 Talian Komunikasi Dua Hala: Sedia Dihubungkan ke Pusat SMC
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background: white; border-left: 4px solid var(--primary-navy); padding: 7px 10px;">
+          <div style="font-weight: bold; font-size: 9pt; color: var(--primary-navy); margin-bottom: 2px;">
+            3.6 Pematuhan Spesifikasi Teknikal dan Keselamatan Siber Kerajaan
+          </div>
+          <p style="font-size: 8.5pt; line-height: 1.15; color: #334155;">
+            Selaras dengan Dasar Keselamatan ICT Sektor Awam, sistem ini dilengkapi enkripsi penyulitan penuh SSL/TLS 1.3 bagi menghalang sebarang pemintasan data. Sistem tidak menyimpan sebarang data rahsia rasmi pertahanan di pelayan awam, sebaliknya hanya memproses koordinat geolokasi kecemasan orang awam. Akses ke papan pemuka operasi dihadkan melalui pengesahan stesen operasi berdaftar mengikut wilayah maritim masing-masing.
+          </p>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Perincian Projek: Bahagian (c) Muka 3/4</div>
+        <div class="badge-num">10</div>
+      </footer>
+    </article>
+
+<article id="page-13" class="page" aria-label="Muka Surat 13 - Tindakan Penyelesaian Muka 4">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (c)</span>
+          <span class="header-title">PROTOTAIP, DRY RUN SAREX & PERAKUAN PIHAK BERKUASA</span>
+        </div>
+        <div class="header-right">PENGESAHAN & PENYERAGAMAN</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Prototaip, Uji Cuba Lapangan & Perakuan
+          </div>
+          <div class="subtitle">Evolusi lakaran prototaip, pelaksanaan dry run SAREX, dan perakuan pihak berkuasa BCLBB.</div>
+        </div>
+
+        <div class="card" style="background: white;">
+          <div style="font-weight: bold; font-size: 10pt; color: var(--primary-navy); margin-bottom: 2px;">
+            3.7 Evolusi Penghasilan Prototaip (Lakaran Reka Bentuk Hingga Akhir)
+          </div>
+          <div class="grid-3" style="font-size: 8.5pt;">
+            <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 4px; padding: 5px;">
+              <strong style="color: #0284c7;">FASA 1: WIREFRAME</strong><br>
+              Lakaran skrin panel kawalan, pemetaan sektor grid maritim, dan butang kecemasan cepat (Mayday/MOB).
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 4px; padding: 5px;">
+              <strong style="color: #0284c7;">FASA 2: PROTOTAIP ALFA</strong><br>
+              Pengujian kod di komputer bilik gerakan untuk menilai kejituan algoritma jarak nautika dan integrasi peta.
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 4px; padding: 5px;">
+              <strong style="color: #0284c7;">FASA 3: PROTOTAIP BETA</strong><br>
+              Penyebaran aplikasi PWA ke telefon bot dan ujian transmisi data di bawah getaran enjin bot sebenar di laut.
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-glow-blue" style="padding: 7px 10px;">
+          <div style="font-weight: bold; font-size: 9.5pt; color: var(--primary-navy); margin-bottom: 2px;">
+            3.8 Pelaksanaan Uji Cuba (Dry Run) Sempena SAREX Jong Semerak (26–27 Julai 2026)
+          </div>
+          <p style="font-size: 8.5pt; text-align: justify; line-height: 1.15; color: #334155;">
+            Pengujian lapangan berskala besar dilaksanakan sempena Search and Rescue Exercise (SAREX) Jong Semerak di Maritim Negeri Kelantan. Sistem diuji secara langsung melibatkan pelbagai aset bot penyelamat dan agensi sahabat termasuk Pasukan Polis Marin. Dapatan dry run membuktikan koordinat sektor carian yang dipancarkan dari bilik kawalan berjaya diterima oleh anggota bot dalam masa 42 saat tanpa sebarang ralat transkripsi, berbanding kaedah panggilan radio lisan sebelumnya.
+          </p>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--success-green); padding: 7px 10px;">
+          <div style="font-weight: bold; font-size: 9.5pt; color: var(--primary-navy); margin-bottom: 2px;">
+            3.9 Perakuan & Pengesahan Pihak Berkuasa (Bahagian BCLBB Ibu Pejabat APMM)
+          </div>
+          <p style="font-size: 8.5pt; text-align: justify; line-height: 1.15; color: #334155;">
+            Sistem ini diperakukan secara rasmi oleh Ketua Penolong Pengarah Kanan, Bahagian CARILAMAT dan Bantuan Bencana (BCLBB) Ibu Pejabat APMM, yang mengesahkan bahawa modul pengiraan corak carian sistem mematuhi kehendak National Aeronautical & Maritime Search and Rescue (NAMSAR) Manual. Sokongan ini diperkukuhkan melalui pengesahan Ketua Jabatan Maritim Negeri Pahang bagi pengoperasian sistem secara berterusan (rujuk Lampiran B & C).
+          </p>
+        </div>
+
+        <div class="card card-navy" style="padding: 7px 10px;">
+          <div style="font-size: 8pt; color: #38bdf8; font-weight: bold; text-transform: uppercase;">
+            3.10 PELAKSANAAN INOVASI & PENYERAGAMAN PROSES KERJA (SOP SAR DIGITAL):
+          </div>
+          <div style="font-size: 8pt; margin-top: 2px; line-height: 1.15;">
+            Sistem ini diguna pakai secara konsisten di MRSC Kuantan dengan pengenalan Standard Operating Procedure (SOP) SAR Digital bagi setiap panggilan insiden kecemasan. Setiap petugas syif bilik gerakan telah dilatih mengendalikan penjanaan SitRep automatik, manakala semua nakhoda bot peronda dibekalkan pautan PWA bagi operasi harian.
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Perincian Projek: Bahagian (c) Muka 4/4</div>
+        <div class="badge-num">11</div>
+      </footer>
+    </article>
+
+<article id="page-14" class="page" aria-label="Muka Surat 14 - Keberhasilan Projek Muka 1">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (d)</span>
+          <span class="header-title">KEBERHASILAN PROJEK: OUTCOME KUANTITATIF & PEMBUKTIAN</span>
+        </div>
+        <div class="header-right">WAJARAN: [ 53 MARKAH ]</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            d) Keberhasilan Projek (Outcome Kuantitatif)
+          </div>
+          <div class="subtitle">Penilaian peningkatan prestasi operasi, penjimatan masa 91.6%, kelajuan data dan sifar kos.</div>
+        </div>
+
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Parameter Penilaian</th>
+              <th style="width: 24%;">Sebelum Inovasi (Kaedah Legasi)</th>
+              <th style="width: 24%;">Selepas Inovasi (Maritime SAR System)</th>
+              <th style="width: 24%;">Kadar Keberhasilan & Impak</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Masa Penyediaan Laporan (SitRep)</strong></td>
+              <td style="color: var(--danger-red); font-weight: bold;">180 Minit (3 Jam)</td>
+              <td style="color: var(--success-green); font-weight: bold;">15 Minit</td>
+              <td><span style="background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 8.5pt;">Penjimatan 91.6%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Penyaluran Koordinat ke Bot (SRU)</strong></td>
+              <td style="color: var(--danger-red); font-weight: bold;">30 - 45 Minit</td>
+              <td style="color: var(--success-green); font-weight: bold;">&lt; 1 Minit</td>
+              <td><span style="background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 8.5pt;">Pantas &gt; 95%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ralat Transkripsi Sebutan Koordinat</strong></td>
+              <td style="color: var(--danger-red); font-weight: bold;">Kerap Berlaku (Ralat Lisan)</td>
+              <td style="color: var(--success-green); font-weight: bold;">Sifar (Integrasi GPS)</td>
+              <td><span style="background: #dbeafe; color: #1e40af; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 8.5pt;">100% Sifar Ralat</span></td>
+            </tr>
+            <tr>
+              <td><strong>Kos Pembangunan & Lesen Perisian</strong></td>
+              <td style="color: #64748b; font-weight: bold;">Kos Vendor Tinggi (RM150k+)</td>
+              <td style="color: var(--success-green); font-weight: bold;">RM 0 (In-House Asli)</td>
+              <td><span style="background: #fef3c7; color: #92400e; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 8.5pt;">100% Kos Sifar</span></td>
+            </tr>
+            <tr>
+              <td><strong>Kadar Kepuasan Hati Petugas & Bot</strong></td>
+              <td style="color: #64748b; font-weight: bold;">42% (Sederhana Rendah)</td>
+              <td style="color: var(--success-green); font-weight: bold;">98% (Sangat Puas Hati)</td>
+              <td><span style="background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 8.5pt;">Peningkatan 56%</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="card" style="background: white; padding: 7px 10px;">
+          <div style="font-weight: bold; font-size: 9.5pt; color: var(--primary-navy); margin-bottom: 5px;">
+            ANALISIS VISUAL PENINGKATAN PRESTASI UTAMA:
+          </div>
+
+          <div style="margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; font-size: 9pt; font-weight: bold; margin-bottom: 2px;">
+              <span>⏱️ Masa Penyediaan Laporan Insiden & SitRep (Minit)</span>
+              <span style="color: var(--success-green);">Penjimatan 165 Minit (-91.6%)</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="display: flex; align-items: center; font-size: 8.5pt; font-weight: bold; gap: 6px;">
+                <span style="width: 50px; text-transform: uppercase; color: #64748b;">Sebelum</span>
+                <div style="background: #94a3b8; height: 14px; border-radius: 3px; width: 88%; color: white; padding: 0 6px; display: flex; align-items: center;">180 Minit (3 Jam)</div>
+              </div>
+              <div style="display: flex; align-items: center; font-size: 8.5pt; font-weight: bold; gap: 6px;">
+                <span style="width: 50px; text-transform: uppercase; color: #64748b;">Selepas</span>
+                <div style="background: #10b981; height: 14px; border-radius: 3px; width: 12%; color: white; padding: 0 6px; display: flex; align-items: center;">15 Minit</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 6px;">
+            <div style="display: flex; justify-content: space-between; font-size: 9pt; font-weight: bold; margin-bottom: 2px;">
+              <span>📡 Kelajuan Penyaluran Koordinat Sektor Carian ke Aset Bot (Minit)</span>
+              <span style="color: var(--success-green);">&gt; 95% Lebih Pantas</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="display: flex; align-items: center; font-size: 8.5pt; font-weight: bold; gap: 6px;">
+                <span style="width: 50px; text-transform: uppercase; color: #64748b;">Sebelum</span>
+                <div style="background: #94a3b8; height: 14px; border-radius: 3px; width: 75%; color: white; padding: 0 6px; display: flex; align-items: center;">35 Minit</div>
+              </div>
+              <div style="display: flex; align-items: center; font-size: 8.5pt; font-weight: bold; gap: 6px;">
+                <span style="width: 50px; text-transform: uppercase; color: #64748b;">Selepas</span>
+                <div style="background: #10b981; height: 14px; border-radius: 3px; width: 8%; color: white; padding: 0 6px; display: flex; align-items: center;">&lt; 1 Minit</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 9pt; font-weight: bold; margin-bottom: 2px;">
+              <span>🌟 Skor Indeks Kepuasan Petugas Bilik Gerakan & Nakhoda Bot</span>
+              <span style="color: var(--success-green);">Lonjakan 56% Mata Kepuasan</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="display: flex; align-items: center; font-size: 8.5pt; font-weight: bold; gap: 6px;">
+                <span style="width: 50px; text-transform: uppercase; color: #64748b;">Sebelum</span>
+                <div style="background: #94a3b8; height: 14px; border-radius: 3px; width: 42%; color: white; padding: 0 6px; display: flex; align-items: center;">42% (Sederhana)</div>
+              </div>
+              <div style="display: flex; align-items: center; font-size: 8.5pt; font-weight: bold; gap: 6px;">
+                <span style="width: 50px; text-transform: uppercase; color: #64748b;">Selepas</span>
+                <div style="background: #10b981; height: 14px; border-radius: 3px; width: 98%; color: white; padding: 0 6px; display: flex; align-items: center;">98% (Sangat Berpuas Hati)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-glow-blue" style="padding: 6px 10px;">
+          <div style="font-weight: bold; font-size: 9pt; color: var(--primary-navy); margin-bottom: 1px;">
+            💰 Penjimatan Dana Awam Kerajaan (Cost Avoidance & Pulangan Pelaburan)
+          </div>
+          <p style="font-size: 8.5pt; line-height: 1.15; color: #334155;">
+            Sistem pengurusan SAR komersial pasaran lazimnya menuntut perolehan perisian bernilai RM 150,000 hingga RM 250,000 berserta yuran lesen tahunan berulang. Dengan pembangunan 100% in-house oleh warga APMM, kerajaan mencapai penjimatan kos langsung sepenuhnya di samping memelihara kedaulatan data taktikal maritim negara.
+          </p>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Perincian Projek: Bahagian (d) Muka 1/2</div>
+        <div class="badge-num">12</div>
+      </footer>
+    </article>
+
+<article id="page-15" class="page" aria-label="Muka Surat 15 - Keberhasilan Projek Muka 2">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (d)</span>
+          <span class="header-title">PENILAIAN IMPAK, PENJIMATAN SUMBER & MAKLUM BALAS</span>
+        </div>
+        <div class="header-right">IMPAK JANGKA PANJANG</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Penilaian Impak Jangka Panjang & Faedah Sampingan
+          </div>
+          <div class="subtitle">Penyelamatan Waktu Emas (Golden Hours), penjimatan bahan api bot, dan analisis maklum balas.</div>
+        </div>
+
+        <div class="card" style="background: white; border-left: 4px solid var(--success-green); padding: 7px 10px;">
+          <div style="font-weight: bold; font-size: 9.5pt; color: var(--primary-navy); margin-bottom: 2px;">
+            4.6 Memaksimumkan Peluang Kelangsungan Hidup Mangsa (Golden Hours of SAR)
+          </div>
+          <p style="font-size: 8.5pt; text-align: justify; line-height: 1.15; color: #334155;">
+            Di perairan terbuka, ancaman hipotermia, dehidrasi, dan keletihan boleh menyebabkan mangsa lemas dalam tempoh beberapa jam pertama. Penjimatan masa koordinasi sehingga 165 minit membolehkan aset bot penyelamat tiba di lokasi hanyutan mangsa dalam tempoh Waktu Emas Penyelamatan (Golden Hours). Ini secara signifikan meningkatkan peluang mangsa ditemui dalam keadaan selamat serta menamatkan penderitaan emosi keluarga mangsa dengan lebih pantas.
+          </p>
+        </div>
+
+        <div class="card" style="background: white; border-left: 4px solid var(--accent-gold); padding: 7px 10px;">
+          <div style="font-weight: bold; font-size: 9.5pt; color: var(--primary-navy); margin-bottom: 2px;">
+            4.7 Penjimatan Bahan Api Diesel Bot Peronda Melalui Kejituan Sektor Carian
+          </div>
+          <p style="font-size: 8.5pt; text-align: justify; line-height: 1.15; color: #334155;">
+            Bot peronda maritim berkuasa tinggi menggunakan bahan api diesel pada kadar 150 hingga 300 liter sejam semasa operasi rondaan. Sebelum ini, kesilapan pemahaman koordinat lisan sering menyebabkan bot meronda di luar sektor carian yang salah selama berjam-jam. Dengan panduan corak carian digital automatik, jarak pelayaran bot menjadi lebih tepat dan terarah, sekali gus mengurangkan pembaziran bahan api kerajaan dan memelihara jangka hayat enjin bot.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card" style="background: #f8fafc; padding: 6px 9px;">
+            <div style="font-weight: bold; font-size: 9pt; color: var(--primary-navy); margin-bottom: 2px;">
+              💡 FAEDAH SAMPINGAN JANGKA PENDEK:
+            </div>
+            <ul style="font-size: 8pt; padding-left: 14px; color: #475569; display: flex; flex-direction: column; gap: 2px;">
+              <li><strong>Pengurangan Tekanan Mental:</strong> Mengelakkan keletihan melampau juruoperasi yang sebelum ini menaip berulang.</li>
+              <li><strong>Integriti Rekod Bukti:</strong> Setiap arahan dan kedudukan direkodkan secara berstempel masa bagi rujukan inkuiri.</li>
+            </ul>
+          </div>
+          <div class="card" style="background: #f8fafc; padding: 6px 9px;">
+            <div style="font-weight: bold; font-size: 9pt; color: var(--primary-navy); margin-bottom: 2px;">
+              🛡️ FAEDAH SAMPINGAN JANGKA PANJANG:
+            </div>
+            <ul style="font-size: 8pt; padding-left: 14px; color: #475569; display: flex; flex-direction: column; gap: 2px;">
+              <li><strong>Pembudayaan Celik Digital:</strong> Meningkatkan kemahiran ICT dan navigasi peranti pintar dalam kalangan anggota bawahan.</li>
+              <li><strong>Imej Maritim Antarabangsa:</strong> Memperkukuh reputasi APMM sebagai agensi maritim pintar dan canggih di rantau ASEAN.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card card-navy" style="padding: 7px 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+            <span style="font-size: 8.5pt; color: #38bdf8; font-weight: bold; text-transform: uppercase;">
+              4.10 DAPATAN KAJI SELIDIK PENGGUNA (GOOGLE FORMS):
+            </span>
+            <span style="background: #10b981; color: white; font-size: 8pt; font-weight: bold; padding: 1px 6px; border-radius: 4px;">
+              98% KEPUASAN KESELURUHAN
+            </span>
+          </div>
+          <div class="grid-3" style="font-size: 8pt;">
+            <div style="background: rgba(255,255,255,0.08); padding: 4px 6px; border-radius: 4px;">
+              <strong>KEMUDAHAN APLIKASI:</strong><br>
+              96% responden menyatakan susun atur antaramuka sangat mesra pengguna di atas bot.
+            </div>
+            <div style="background: rgba(255,255,255,0.08); padding: 4px 6px; border-radius: 4px;">
+              <strong>KETEPATAN KOORDINAT:</strong><br>
+              100% nakhoda bot mengesahkan koordinat yang diterima tepat sepadan dengan sistem GPS bot.
+            </div>
+            <div style="background: rgba(255,255,255,0.08); padding: 4px 6px; border-radius: 4px;">
+              <strong>KEPANTASAN SITREP:</strong><br>
+              98% pegawai operasi menyokong sistem dijadikan prosedur tetap di semua stesen APMM.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Perincian Projek: Bahagian (d) Muka 2/2</div>
+        <div class="badge-num">13</div>
+      </footer>
+    </article>
+
+<article id="page-16" class="page" aria-label="Muka Surat 16 - Potensi Perkembangan Projek & Kelulusan">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 2.0 (e)</span>
+          <span class="header-title">POTENSI PERKEMBANGAN, REPLIKASI & KELULUSAN RASMI</span>
+        </div>
+        <div class="header-right">WAJARAN: [ 10 MARKAH ]</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            e) Potensi Perkembangan Projek & Replikasi
+          </div>
+          <div class="subtitle">Tahap ketersediaan teknologi siap guna, pelan replikasi kebangsaan, dan pengesahan rasmi.</div>
+        </div>
+
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-blue); padding: 7px 10px;">
+          <div style="font-weight: bold; font-size: 9.5pt; color: var(--primary-navy); margin-bottom: 2px; display: flex; justify-content: space-between;">
+            <span>5.1 Tahap Ketersediaan Teknologi (Production Ready / Finished Goods)</span>
+            <span style="background: #ecfdf5; color: #047857; font-weight: bold; font-size: 8pt; padding: 1px 6px; border-radius: 4px;">100% Sedia Guna</span>
+          </div>
+          <p style="font-size: 8.5pt; text-align: justify; line-height: 1.15; color: #334155;">
+            Sistem ini berada pada tahap kematangan teknologi tertinggi (Technology Readiness Level 9 / Finished Goods). Kedua-dua aplikasi telah ditempatkan pada infrastruktur awan pengeluaran global (Cloudflare Pages dan Vercel) dan sedia diakses pada bila-bila masa tanpa kebergantungan kepada perolehan perkakasan tambahan. Sistem telah melepasi fasa pengujian ricih di persekitaran operasi sebenar dan terbukti stabil 24/7.
+          </p>
+        </div>
+
+        <div>
+          <div style="font-weight: bold; font-size: 9pt; color: var(--primary-navy); margin-bottom: 3px;">
+            5.2 Pelan Replikasi Menyeluruh ke Pusat Operasi Maritim Seluruh Malaysia
+          </div>
+          <div class="grid-3">
+            <div class="card" style="text-align: center; border-top: 3px solid #0284c7; padding: 5px;">
+              <div style="font-size: 13pt;">🏛️</div>
+              <div style="font-weight: bold; font-size: 8.5pt; color: var(--primary-navy);">MRCC Putrajaya</div>
+              <div style="font-size: 7.5pt; color: var(--text-muted);">Pusat Kawalan Kebangsaan</div>
+            </div>
+            <div class="card" style="text-align: center; border-top: 3px solid #0284c7; padding: 5px;">
+              <div style="font-size: 13pt;">⚓</div>
+              <div style="font-weight: bold; font-size: 8.5pt; color: var(--primary-navy);">MRSC Langkawi</div>
+              <div style="font-size: 7.5pt; color: var(--text-muted);">Sektor Wilayah Utara</div>
+            </div>
+            <div class="card" style="text-align: center; border-top: 3px solid #0284c7; padding: 5px;">
+              <div style="font-size: 13pt;">🌊</div>
+              <div style="font-weight: bold; font-size: 8.5pt; color: var(--primary-navy);">MRSC Kuantan</div>
+              <div style="font-size: 7.5pt; color: var(--text-muted);">Sektor Pantai Timur (Perintis)</div>
+            </div>
+            <div class="card" style="text-align: center; border-top: 3px solid #0284c7; padding: 5px;">
+              <div style="font-size: 13pt;">🚢</div>
+              <div style="font-weight: bold; font-size: 8.5pt; color: var(--primary-navy);">MRSC Johor Bahru</div>
+              <div style="font-size: 7.5pt; color: var(--text-muted);">Sektor Wilayah Selatan</div>
+            </div>
+            <div class="card" style="text-align: center; border-top: 3px solid #0284c7; padding: 5px;">
+              <div style="font-size: 13pt;">🌴</div>
+              <div style="font-weight: bold; font-size: 8.5pt; color: var(--primary-navy);">MRSC Kuching</div>
+              <div style="font-size: 7.5pt; color: var(--text-muted);">Sektor Maritim Sarawak</div>
+            </div>
+            <div class="card" style="text-align: center; border-top: 3px solid #0284c7; padding: 5px;">
+              <div style="font-size: 13pt;">🏔️</div>
+              <div style="font-weight: bold; font-size: 8.5pt; color: var(--primary-navy);">MRSC Kota Kinabalu</div>
+              <div style="font-size: 7.5pt; color: var(--text-muted);">Sektor Sabah & Labuan</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="font-size: 8pt;">
+          <div class="card" style="background: white; padding: 6px 8px;">
+            <strong style="color: #0284c7; font-size: 8.5pt;">KOLABORASI AGENSI SAHABAT & NADMA:</strong>
+            <p style="margin-top: 2px; line-height: 1.15; color: #475569;">
+              Sistem bersedia diintegrasikan bersama Agensi Pengurusan Bencana Negara (NADMA), Tentera Laut Diraja Malaysia (TLDM), Pasukan Polis Marin (PDRM), dan Bomba melalui protokol perkongsian data terbuka.
+            </p>
+          </div>
+          <div class="card" style="background: white; padding: 6px 8px;">
+            <strong style="color: #0284c7; font-size: 8.5pt;">HARTA INTELEK (MyIPO) & SERANTAU:</strong>
+            <p style="margin-top: 2px; line-height: 1.15; color: #475569;">
+              Permohonan Pemberitahuan Hak Cipta Perisian sedang didaftarkan melalui Perbadanan Harta Intelek Malaysia (MyIPO) bagi melindungi aset perisian agensi dan membuka potensi pengembangan serantau ASEAN.
+            </p>
+          </div>
+        </div>
+
+        <div style="background: white; border: 1.5px dashed var(--primary-navy); border-radius: 5px; padding: 7px 10px; text-align: center;">
+          <div style="font-size: 8.5pt; font-weight: bold; color: var(--primary-navy); text-transform: uppercase;">
+            PERAKUAN DAN PENGESAHAN DOKUMENTASI PROJEK KIK APMM 2026:
+          </div>
+          <div style="margin: 10px auto 4px auto; width: 170px; border-bottom: 1px solid #475569;"></div>
+          <div style="font-size: 9pt; font-weight: bold; color: #0b2a4a;">
+            (LAKSAMANA PERTAMA (M) MAZLAN BIN MAT REJAB)
+          </div>
+          <div style="font-size: 8pt; color: var(--text-muted);">
+            Pengarah Maritim Negeri | Ibu Pejabat Maritim Negeri Pahang<br>
+            Agensi Penguatkuasaan Maritim Malaysia
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Perincian Projek: Bahagian (e) Tamat</div>
+        <div class="badge-num">14</div>
+      </footer>
+    </article>
+
+<article id="page-17" class="page" aria-label="Muka Surat 17 - Lampiran Dokumen Rasmi">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 3.0</span>
+          <span class="header-title">LAMPIRAN: DOKUMEN SOKONGAN & KELULUSAN RASMI</span>
+        </div>
+        <div class="header-right">APENDIKS DOKUMEN</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Lampiran Dokumen Sokongan Rasmi
+          </div>
+          <div class="subtitle">Borang Penyertaan Rasmi KIK 2026, Pengesahan Ketua Jabatan, dan Memo Sokongan Rasmi.</div>
+        </div>
+
+        <div class="grid-2">
+          <div class="lampiran-card">
+            <div style="font-weight: bold; color: var(--primary-navy); font-size: 8.5pt;">LAMPIRAN A (MUKA 1): BORANG PENYERTAAN KIK 2026</div>
+            <img src="Lampiran/Screenshot 2026-09-23 103936.png" alt="Borang Penyertaan KIK 2026 Muka 1" class="lampiran-img">
+            <div class="lampiran-caption">
+              <strong>Kategori:</strong> Penciptaan | <strong>Tajuk:</strong> Maritime Search Rescue Unit (SRU) Management System | <strong>Tarikh Ditubuhkan:</strong> 19 Mei 2026 | <strong>Ketua:</strong> Lt Kdr (M) Mohd Zulhairy bin Abd Halim.
+            </div>
+          </div>
+
+          <div class="lampiran-card">
+            <div style="font-weight: bold; color: var(--primary-navy); font-size: 8.5pt;">LAMPIRAN A (MUKA 2): PENGESAHAN KETUA JABATAN</div>
+            <img src="Lampiran/Screenshot 2026-09-23 104008.png" alt="Pengesahan Kelulusan Ketua Jabatan Muka 2" class="lampiran-img">
+            <div class="lampiran-caption">
+              <strong>Pengesahan:</strong> Ditandatangani dan dicop rasmi oleh Laksamana Pertama (M) Mazlan bin Mat Rejab, Pengarah Maritim Negeri Pahang pada <strong>19 Mei 2026</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-navy" style="padding: 9px 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 3px;">
+            <div>
+              <div style="font-size: 8.5pt; color: #38bdf8; font-weight: bold; text-transform: uppercase;">LAMPIRAN B: MEMO SOKONGAN RASMI PENYERTAAN KIK</div>
+              <div style="font-size: 10.5pt; font-weight: bold; color: white;">Ibu Pejabat Maritim Negeri Pahang (APMM)</div>
+            </div>
+            <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid #f59e0b; color: #fde68a; font-size: 8pt; font-weight: bold; padding: 2px 6px; border-radius: 4px;">
+              RUJUKAN: APMM-W3.100-13/5/1 Jld. 3 (8)
+            </span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 8pt; margin-bottom: 5px;">
+            <div><strong>Daripada:</strong> Pengarah Maritim Negeri Pahang</div>
+            <div><strong>Tarikh Rasmi:</strong> 1 Oktober 2026</div>
+            <div><strong>Kepada:</strong> Kumpulan Inovasi Kreatif MRSC Kuantan</div>
+            <div><strong>Perkara:</strong> Sokongan Penyertaan Pertandingan KIK APMM 2026</div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.06); border-radius: 4px; padding: 5px 8px; font-size: 8pt; line-height: 1.25; color: #cbd5e1;">
+            <em>"Sukacita dimaklumkan IPMN Pahang dengan ini memberikan sokongan penuh dan kelulusan rasmi kepada Kumpulan KIK MRSC Kuantan bagi menyertai Pertandingan Kumpulan Inovatif dan Kreatif (KIK) APMM Tahun 2026. Pihak pengurusan mengesahkan maklumat penyertaan adalah tepat dan mendoakan kejayaan kumpulan dalam membawa cabaran serta mengharumkan nama IPMN Pahang di pertandingan berkenaan."</em>
+          </div>
+
+          <div style="margin-top: 5px; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: #94a3b8;">
+            <span>Tandatangan Asal: <strong>Laksamana Pertama (M) Mazlan bin Mat Rejab</strong></span>
+            <span style="color: #6ee7b7; font-weight: bold;">✓ Salinan PDF Memo Rasmi Disahkan</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Lampiran Dokumen Rasmi</div>
+        <div class="badge-num">15</div>
+      </footer>
+    </article>
+
+<article id="page-18" class="page" aria-label="Muka Surat 18 - Lampiran Bukti Bergambar">
+      <header class="page-header">
+        <div class="header-left">
+          <span class="tag">SEKSYEN 3.0</span>
+          <span class="header-title">LAMPIRAN: PEMBUKTIAN BERGAMBAR & PENGUJIAN SISTEM</span>
+        </div>
+        <div class="header-right">EVIDENS BERGAMBAR</div>
+      </header>
+
+      <div class="page-content">
+        <div>
+          <div class="section-title">
+            <span class="bar"></span>
+            Bukti Bergambar Sesi Pembentangan & Simulasi
+          </div>
+          <div class="subtitle">Evidens pembentangan peringkat Ibu Pejabat (BCLBB), sesi taklimat Google Meet, dan ujian operasi.</div>
+        </div>
+
+        <div class="lampiran-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: bold; color: var(--primary-navy); font-size: 8.5pt;">LAMPIRAN C: PEMBENTANGAN KEPADA BAHAGIAN BCLBB IBU PEJABAT APMM</span>
+            <span style="font-size: 7.5pt; background: #e0f2fe; color: #0369a1; padding: 1px 6px; border-radius: 4px; font-weight: bold;">SAREX Jong Semerak (26-27 Julai 2026)</span>
+          </div>
+          <img src="Lampiran/Ketua Penolong Pengarah Kanan, Bahagian CARILAMAT dan Bantuan Bencana (BCLBB) di Ibu Pecccccccccccccccccccccccc_ejfiejiefeof_jfeijfjiei.jpeg" alt="Pembentangan Sistem kepada BCLBB di Kelantan" class="lampiran-img" style="max-height: 120px; object-fit: cover;">
+          <div class="lampiran-caption">
+            <strong>Keterangan Evidens:</strong> Sesi demonstrasi langsung <em>SAR Mission Coordinator Dashboard</em> di hadapan <strong>Ketua Penolong Pengarah Kanan, Bahagian CARILAMAT dan Bantuan Bencana (BCLBB) Ibu Pejabat APMM</strong> serta para pegawai operasi sempena Latihan Simulasi SAREX Jong Semerak di Maritim Negeri Kelantan.
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="lampiran-card">
+            <span style="font-weight: bold; color: var(--primary-navy); font-size: 8pt;">LAMPIRAN D: UJIAN GOOGLE MEET ANTARA-MRSC</span>
+            <img src="Lampiran/WhatsApp Image 2026-10-07 at 12.31.17 PM.jpeg" alt="Sesi Google Meet Pembentangan Sistem" class="lampiran-img" style="max-height: 95px; object-fit: cover;">
+            <div class="lampiran-caption">
+              <strong>Sesi Google Meet (7 Okt 2026):</strong> Demonstrasi sistem melibatkan MRCC Putrajaya, MRSC Langkawi, MRSC Kuantan, MRSC Kuching, MRSC JB, dan BCLBB.
+            </div>
+          </div>
+
+          <div class="lampiran-card">
+            <span style="font-weight: bold; color: var(--primary-navy); font-size: 8pt;">LAMPIRAN E: SIMULASI BERSAMA POLIS MARIN</span>
+            <img src="Lampiran/WhatsApp Image 2026-10-07 at 12.31.17 PMs.jpeg" alt="Paparan Taktikal SMC Dashboard dan Bot Polis Marin" class="lampiran-img" style="max-height: 95px; object-fit: cover;">
+            <div class="lampiran-caption">
+              <strong>Ujian Taktikal Lapangan:</strong> Paparan sektor carian berbilang zon (Zon A-1 hingga A-14) diselaraskan bersama Pasukan Polis Marin Wilayah Selatan.
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-glow-blue" style="padding: 6px 10px; font-size: 8pt; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong style="color: var(--primary-navy);">LAMPIRAN F: PENGUJIAN SISTEM LANGSUNG OLEH PANEL PENILAI (24/7 LIVE DEMO)</strong><br>
+            Aplikasi Lapangan: <code>https://sar-mobile.vercel.app/</code> | Pusat Kawalan: <code>https://smc-sar-mmea-dashboard.pages.dev/</code>
+          </div>
+          <span style="font-weight: bold; color: #0284c7; background: white; border: 1px solid #0284c7; padding: 2px 6px; border-radius: 4px;">
+            AKSES BEBAS
+          </span>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div>Dokumen KIK MRSC Kuantan 2026 | Lampiran Tamat - Tamat Dokumen Laporan</div>
+        <div class="badge-num">16</div>
+      </footer>
+    </article>
+
+  </main>
+
+</body>
+</html>
