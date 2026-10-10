@@ -275,49 +275,82 @@
       border-radius: 5px;
       overflow: hidden;
       border: 1px solid var(--border-color);
-      font-size: 10pt;
+      font-size: 12pt;
       line-height: 1.15;
     }
     .info-table th {
       background: var(--primary-navy);
       color: white;
-      padding: 5px 8px;
+      padding: 6px 8px;
       font-weight: bold;
       text-align: left;
-      font-size: 10pt;
+      font-size: 12pt;
     }
     .info-table td {
-      padding: 4px 8px;
+      padding: 5px 8px;
       border-bottom: 1px solid var(--border-color);
       background: white;
-      font-size: 10pt;
+      font-size: 12pt;
     }
     .info-table tr:nth-child(even) td {
       background: #f8fafc;
     }
 
     /* ERRC BOXES */
-    .errc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    /* ERRC BOXES */
+    .errc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .errc-box {
-      border-radius: 5px;
-      padding: 6px 9px;
-      color: white;
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: #0f172a;
     }
-    .errc-box p, .errc-box li, .errc-box strong { color: white; font-size: 9.5pt; }
-    .errc-eliminate { background: linear-gradient(135deg, #b91c1c, #991b1b); }
-    .errc-raise { background: linear-gradient(135deg, #0284c7, #0369a1); }
-    .errc-reduce { background: linear-gradient(135deg, #d97706, #b45309); }
-    .errc-create { background: linear-gradient(135deg, #059669, #047857); }
+    .errc-box p, .errc-box li, .errc-box strong {
+      color: #000000;
+      font-size: 12pt;
+      line-height: 1.15;
+    }
+    .errc-box ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .errc-box li {
+      margin-bottom: 4px;
+    }
+    .errc-eliminate {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-top: 3px solid #dc2626;
+    }
+    .errc-raise {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-top: 3px solid #0284c7;
+    }
+    .errc-reduce {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-top: 3px solid #d97706;
+    }
+    .errc-create {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-top: 3px solid #16a34a;
+    }
     .errc-header {
       font-weight: bold;
-      font-size: 10.5pt;
+      font-size: 11.5pt;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 2px;
-      margin-bottom: 3px;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
+    .errc-eliminate .errc-header { color: #991b1b; }
+    .errc-raise .errc-header { color: #0369a1; }
+    .errc-reduce .errc-header { color: #b45309; }
+    .errc-create .errc-header { color: #15803d; }
 
     /* KPI CARDS */
     .kpi-card {
@@ -1273,10 +1306,10 @@
               </g>
               <!-- Punca Manusia 1 -->
               <rect x="20" y="48" width="315" height="36" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
-              <text x="32" y="71" fill="#0369a1" font-size="16" font-weight="bold">• Agensi sahabat tiada ilmu IAMSAR</text>
+              <text x="32" y="71" fill="#0369a1" font-size="16" font-weight="bold">• Kurang kemahiran Search Pattern</text>
               <!-- Punca Manusia 2 -->
               <rect x="20" y="90" width="315" height="36" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
-              <text x="32" y="113" fill="#0369a1" font-size="16" font-weight="bold">• Kru bot sukar catat koordinat radio</text>
+              <text x="32" y="113" fill="#0369a1" font-size="16" font-weight="bold">• Ralat catat &amp; plot koordinat SAR</text>
 
               <!-- KELOMPOK 2: PERALATAN (MACHINE) -->
               <g filter="url(#shadow)">
@@ -1306,10 +1339,10 @@
               <!-- KELOMPOK 4: PERSEKITARAN (ENVIRONMENT) -->
               <!-- Punca Persekitaran 1 -->
               <rect x="355" y="254" width="315" height="36" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5" />
-              <text x="367" y="277" fill="#b45309" font-size="16" font-weight="bold">• Kawasan Carilamat luas seluruh negara</text>
+              <text x="367" y="277" fill="#b45309" font-size="16" font-weight="bold">• Kawasan Carilamat yang luas</text>
               <!-- Punca Persekitaran 2 -->
               <rect x="355" y="296" width="315" height="36" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5" />
-              <text x="367" y="319" fill="#b45309" font-size="16" font-weight="bold">• Laut bergelora Monsun &amp; tempias masin</text>
+              <text x="367" y="319" fill="#b45309" font-size="16" font-weight="bold">• Liputan telekomunikasi laut terhad</text>
               <!-- Kategori Persekitaran Header -->
               <g filter="url(#shadow)">
                 <rect x="355" y="338" width="315" height="34" rx="5" fill="#d97706" />
@@ -1318,11 +1351,14 @@
 
               <!-- KEPALA IKAN (PUNCA AKHIR / AKIBAT) -->
               <g filter="url(#shadow)">
-                <polygon points="685,95 855,190 685,285" fill="#fee2e2" stroke="#dc2626" stroke-width="3" />
-                <circle cx="828" cy="190" r="6" fill="#dc2626" />
-                <text x="760" y="150" fill="#991b1b" font-size="17" font-weight="bold" text-anchor="middle">AKIBAT / ISU:</text>
-                <text x="760" y="180" fill="#991b1b" font-size="18.5" font-weight="bold" text-anchor="middle">KOORDINASI SAR SUKAR</text>
-                <text x="760" y="210" fill="#b91c1c" font-size="17.5" font-weight="bold" text-anchor="middle">&amp; BERISIKO RALAT</text>
+                <polygon points="670,45 860,190 670,335" fill="#fee2e2" stroke="#dc2626" stroke-width="3" />
+                <circle cx="842" cy="190" r="5" fill="#dc2626" />
+                <text x="682" y="115" fill="#7f1d1d" font-size="14" font-weight="bold" text-anchor="start" letter-spacing="1">ISU</text>
+                <text x="682" y="142" fill="#7f1d1d" font-size="14.5" font-weight="bold" text-anchor="start" letter-spacing="0.5">UTAMA:</text>
+                <text x="682" y="176" fill="#7f1d1d" font-size="16" font-weight="bold" text-anchor="start">KOORDINASI SAR</text>
+                <text x="682" y="206" fill="#7f1d1d" font-size="16" font-weight="bold" text-anchor="start">&amp; PELAPORAN</text>
+                <text x="682" y="240" fill="#7f1d1d" font-size="15" font-weight="bold" text-anchor="start">KURANG</text>
+                <text x="682" y="268" fill="#7f1d1d" font-size="15" font-weight="bold" text-anchor="start">CEKAP</text>
               </g>
             </svg>
           </div>
@@ -1348,83 +1384,82 @@
         <div>
           <div class="section-title">
             <span class="bar"></span>
-            Kerangka Strategik ERRC & Sasaran Outcome
+            Kerangka Strategik Blue Ocean (ERRC) &amp; Sasaran Outcome
           </div>
-          <div class="subtitle">Aplikasi Four Actions Framework (Blue Ocean Strategy) dan penentuan sasaran KPI projek.</div>
         </div>
 
         <div class="errc-grid">
           <div class="errc-box errc-eliminate">
             <div class="errc-header"><span>HAPUS (ELIMINATE)</span><span>✖</span></div>
             <ul style="padding-left: 14px; margin-top: 2px;">
-              <li>Penggunaan buku log fizikal & borang kertas yang mudah basah di laut.</li>
-              <li>Ralat transkripsi sebutan digit koordinat lisan melalui radio VHF.</li>
-              <li>Komunikasi bertingkat yang melambatkan pengesahan arahan carian.</li>
+              <li>Ralat transkripsi koordinat VHF &amp; proses salin manual teks WhatsApp.</li>
+              <li>Kaedah pelaporan manual bertingkat serta rekod buku log kertas.</li>
+              <li>Pelayaran aset secara rawak tanpa panduan corak carian saintifik.</li>
             </ul>
           </div>
           <div class="errc-box errc-raise">
             <div class="errc-header"><span>TINGKAT (RAISE)</span><span>▲</span></div>
             <ul style="padding-left: 14px; margin-top: 2px;">
-              <li>Kelajuan penyaluran data dari SMC ke telefon bot laut (< 1 minit).</li>
-              <li>Ketepatan corak carian mengikut standard antarabangsa IAMSAR.</li>
-              <li>Integriti rekod jejak masa insiden bagi tujuan siasatan maritim.</li>
+              <li>Kelajuan transmisi koordinat dari SMC ke bot laut (&lt; 1 minit).</li>
+              <li>Pematuhan piawaian corak carian antarabangsa manual IAMSAR.</li>
+              <li>Kesedaran situasi (situational awareness) melalui penjejakan masa nyata.</li>
             </ul>
           </div>
           <div class="errc-box errc-reduce">
             <div class="errc-header"><span>KURANG (REDUCE)</span><span>▼</span></div>
             <ul style="padding-left: 14px; margin-top: 2px;">
-              <li>Masa penyediaan laporan operasi SitRep daripada 3 jam kepada 15 minit.</li>
-              <li>Pembaziran minyak diesel bot akibat kesilapan laluan sektor pencarian.</li>
-              <li>Beban stres mental juruoperasi bilik gerakan semasa kecemasan besar.</li>
+              <li>Masa penyaluran sektor &amp; koordinat carian ke bot (30–45 minit ke &lt; 1 minit).</li>
+              <li>Risiko pertindihan atau keciciran sektor carian antara bot penyelamat.</li>
+              <li>Kebergantungan kepada liputan talian internet/selular di laut lepas.</li>
             </ul>
           </div>
           <div class="errc-box errc-create">
             <div class="errc-header"><span>CIPTA (CREATE)</span><span>★</span></div>
             <ul style="padding-left: 14px; margin-top: 2px;">
-              <li>SMC Operational Dashboard berasaskan awan dengan GIS interaktif.</li>
-              <li>Aplikasi SRU Navigator luar talian dengan fungsi GPS kompas magnetik.</li>
-              <li>Penjana automatik laporan format standard NAMSAR dengan eksport PDF.</li>
+              <li>SMC Web Dashboard bersepadu GIS untuk pengurusan operasi secara masa nyata.</li>
+              <li>Aplikasi navigasi luar talian (offline) SRU Navigator berserta panduan kompas GPS.</li>
+              <li>Penjanaan automatik corak carian standard IAMSAR berasaskan input koordinat.</li>
             </ul>
           </div>
         </div>
 
-        <div class="card" style="background: white; border-top: 3px solid var(--primary-navy); padding: 8px 10px;">
-          <div style="font-weight: bold; font-size: 10pt; color: var(--primary-navy); margin-bottom: 4px;">
-            2.10 Matriks Sasaran Outcome KIK APMM 2026 (Baseline vs Sasaran vs Capaian)
+        <div class="card" style="background: white; border-top: 3px solid var(--primary-navy); padding: 8px 12px;">
+          <div style="font-weight: bold; font-size: 12pt; color: var(--primary-navy); margin-bottom: 5px;">
+            2.10 Matriks Sasaran Outcome Projek KIK APMM 2026 (Baseline vs Sasaran Projek)
           </div>
-          <table class="info-table">
+          <table class="info-table" style="font-size: 12pt; line-height: 1.15;">
             <thead>
               <tr>
-                <th style="width: 28%;">Parameter Penilaian</th>
-                <th style="width: 24%;">Kaedah Legasi (Baseline)</th>
-                <th style="width: 24%;">Sasaran Asal KIK</th>
-                <th style="width: 24%;">Pencapaian Inovasi Sebenar</th>
+                <th style="width: 32%; padding: 6px 8px;">Parameter Penilaian / KPI</th>
+                <th style="width: 34%; padding: 6px 8px;">Kaedah Semasa (Baseline)</th>
+                <th style="width: 34%; padding: 6px 8px;">Sasaran Outcome KIK</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Masa Laporan SitRep</strong></td>
-                <td style="color: var(--danger-red); font-weight: bold;">180 Minit (3 Jam)</td>
-                <td>30 Minit (-83.3%)</td>
-                <td style="color: var(--success-green); font-weight: bold;">15 Minit (-91.6%)</td>
-              </tr>
-              <tr>
-                <td><strong>Saluran Koordinat ke Bot</strong></td>
+                <td><strong>Masa Agihan Sektor ke Bot</strong></td>
                 <td style="color: var(--danger-red); font-weight: bold;">30 - 45 Minit</td>
-                <td>&lt; 5 Minit</td>
-                <td style="color: var(--success-green); font-weight: bold;">&lt; 1 Minit (Instant)</td>
+                <td>&lt; 5 Minit (Pengurangan &gt; 85%)</td>
               </tr>
               <tr>
-                <td><strong>Ralat Bacaan Koordinat</strong></td>
-                <td style="color: var(--danger-red); font-weight: bold;">Kerap Berlaku</td>
-                <td>&lt; 5% Ralat</td>
-                <td style="color: var(--success-green); font-weight: bold;">0% (Sifar Ralat)</td>
+                <td><strong>Pemindahan &amp; Plotan Koordinat</strong></td>
+                <td style="color: var(--danger-red); font-weight: bold;">Manual (Salin dari WhatsApp / VHF ke GPS)</td>
+                <td>Plotan Automatik Serta-Merta ke Peta Digital</td>
               </tr>
               <tr>
-                <td><strong>Kos Pembangunan</strong></td>
-                <td style="color: #64748b;">Anggaran RM150k</td>
-                <td>Bawah RM10,000</td>
-                <td style="color: var(--success-green); font-weight: bold;">RM 0 (In-House Asli)</td>
+                <td><strong>Visualisasi Corak IAMSAR</strong></td>
+                <td style="color: var(--danger-red); font-weight: bold;">Tiada Paparan Visual (Kru Belayar Rawak)</td>
+                <td>Laluan Corak Carian Terpapar Jelas di Skrin</td>
+              </tr>
+              <tr>
+                <td><strong>Navigasi Luar Talian (Laut Lepas)</strong></td>
+                <td style="color: var(--danger-red); font-weight: bold;">Aplikasi Terputus Apabila Tiada Liputan Selular</td>
+                <td>Kekal Berfungsi Berpandukan Sensor GPS Telefon</td>
+              </tr>
+              <tr>
+                <td><strong>Kos Pembangunan Sistem</strong></td>
+                <td style="color: #64748b;">Perolehan Luar (Anggaran RM150k)</td>
+                <td>RM 0 (Pembangunan In-House Asli)</td>
               </tr>
             </tbody>
           </table>
